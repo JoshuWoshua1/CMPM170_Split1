@@ -91,7 +91,6 @@ public class ToolGenerator : MonoBehaviour
             int ToolMiningSpeed = Int32.Parse(values[4].Trim());
             int ToolMiningDamage = Int32.Parse(values[5].Trim());
             string ToolType = values.Length > 6 ? values[6].Trim() : "Pickaxe"; // pickaxe is default type if not specified
-            Debug.Log($"Creating Tool of:  - Rarity: {ToolRarity}, Name: {ToolName}, Durability: {ToolDurability}, Mining Speed: {ToolMiningSpeed}, Mining Damage: {ToolMiningDamage}");
             
             Tool newTool = new Tool(ToolRarity, ToolName, ToolDescription, ToolDurability, ToolMiningSpeed, ToolMiningDamage, imageIndex, ToolType);
 

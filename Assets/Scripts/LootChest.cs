@@ -4,21 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;   
 using TMPro;
+
+using System;
 public class LootChest : MonoBehaviour
 {
    
     public Button GenerateBTN;
     [SerializeField]
     public TextMeshProUGUI Chest_Output_TMP;
+     [SerializeField]
+    public TextMeshProUGUI Chest_Item_Description_TMP;
+    [SerializeField]
+    public RawImage Chest_Item_PFP;
     
     [SerializeField]
     public GameObject Chest_OutputUI;
+    public  ToolGenerator toolGenerator;
 
     private bool alreadyGenerated;
-    private LootChest myChest;
     private int lootCount;
-
-    public ToolGenerator toolGenerator;
+    private LootChest myChest;
+    
 
     void Start()
     {
@@ -88,9 +94,11 @@ public class LootChest : MonoBehaviour
         Chest_OutputUI.SetActive(true);
         foreach(var drop in currentChest.drops)
         {
-            output += "1 x ("  + drop.Rarity + ") " +  drop.Name + "\n" ;
-        }   
-        Chest_Output_TMP.text = output; 
+            output = drop.Name + "\n" ;
+        }  
+        Chest_Item_PFP.color = new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f),1);
+        Chest_Output_TMP.text = output;
+        Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
    

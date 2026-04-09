@@ -1,10 +1,10 @@
 Rarity,Name,Description,Item Durability,Mining Speed,Mining Damage, ToolType
-Common,Wooden Pickaxe,,1,2,3,Pickaxe
-Common,Rusted Copper Axe,,4,5,6,Pickaxe
-Common,Basic Shovel,,7,8,9,Pickaxe
-Uncommon,Iron Pickaxe,,1,1,1,Pickaxe
-Uncommon,Hardened Shovel,,2,3,4,Pickaxe
-Rare,Diamond Pickaxe,,4,5,7,Pickaxe
-Rare,Wobbly Drill,,3,4,5,Drill
-Epic,Pure Hands,,4,7,6,Pickaxe
-Legendary,The Ultimate Drill,,4,5,8,Drill
+Common,Wooden Pickaxe,A simple wooden Pickaxe,1,2,3,Pickaxe
+Common,Rusted Copper Axe,A slightly Rusted PickAxe. Strong but fragile,4,5,6,Pickaxe
+Common,Basic Shovel,A basic shovel ,7,8,9,Pickaxe
+Uncommon,Iron Pickaxe,An Iron Pickaxe. Reliable and sturdy,1,1,1,Pickaxe
+Uncommon,Hardened Shovel,A Hardened Shovel. Has Fast Digging Speeds,2,3,4,Pickaxe
+Rare,Diamond Pickaxe,A hand Forged Pick built from diamond,4,5,7,Pickaxe
+Rare,Wobbly Drill,A weak drill that can mine fast but has a weak durability,3,4,5,Drill
+Epic,Pure Hands,Real Miners use their hands,4,7,6,Pickaxe
+Legendary,The Ultimate Drill,A gift that keeps giving,4,5,8,Drill
