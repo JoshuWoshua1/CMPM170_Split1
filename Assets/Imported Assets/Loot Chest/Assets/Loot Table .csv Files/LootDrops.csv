@@ -1,33 +1,10 @@
 Rarity,Name,Description,Item Durability,Mining Speed,Mining Damage
-Common,Apple,,,,
-Common,Sticks,,,,
-Common,Empty Potion Flask,,,,
-Common,Arrows,,,,
-Common,Cloth,,,,
-Common,Feathers,,,,
-Common,Rope,,,,
-Common,Torch,,,,
-Common,Bread,,,,
-Uncommon,Iron Sword,,,,
-Uncommon,Leather Armor,,,,
-Uncommon,Mana Potion,,,,
-Uncommon,Bronze Coin,,,,
-Uncommon,Basic Health Potion,,,,
-Uncommon,Raw Iron Ore,,,,
-Rare,Steel Sword,,,,
-Rare,Chainmail Armour,,,,
-Rare,Stamina Potion,,,,
-Rare,Advanced Health Potion,,,,
-Rare,Advanced Mana Potion,,,,
-Epic,Diamond Sword,,,,
-Epic,Plate Armor,,,,
-Epic,Elixir of Strength,,,,
-Epic,Elixir of Agility,,,,
-Epic,Power 5 Bow,,,,
-Epic,Fire Staff,,,,
-Epic,Ice Wand,,,,
-Legendary,Excalibur,,,,
-Legendary,Dragon Scale Armor,,,,
-Legendary,Ring of Immortality,,,,
-Legendary,Cloak of Invisibility,,,,
-Legendary,King's Crown,,,,
+Common,Wooden Pickaxe,,1,2,3
+Common,Rusted Copper Axe,,4,5,6
+Common,Basic Shovel,,7,8,9
+Uncommon,Iron Pickaxe,,1,1,1
+Uncommon,Hardened Shovel,,2,3,4
+Rare,Diamond Pickaxe,,4,5,7
+Rare,Wobbly Drill,,3,4,5
+Epic,Pure Hands,,4,7,6
+Legendary,The Ultimate Drill,,4,5,8

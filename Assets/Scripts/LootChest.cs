@@ -1,41 +1,24 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;   
-using Unity.VisualScripting;
-using UnityEditorInternal;
-using System.Xml;
-using System.Collections;
 using TMPro;
-using UnityEditorInternal.Profiling.Memory.Experimental;
-using UnityEditor;
-
 public class LootChest : MonoBehaviour
 {
-    [SerializeField]
-    public string LootTableFilePath;
-    
-    [SerializeField]  
-    public int lootCount = 1;
-    [SerializeField]
-    public bool allowChestRegeneration = false; 
-    [SerializeField]
-    public string[] Rarities = new string[] {"Common","Uncommon","Rare","Epic","Legendary"};
-    [SerializeField]
-    public int[] Rarity_Weights = new int[] {55,30,15,6,1};
-    [SerializeField]
+   
     public Button GenerateBTN;
     [SerializeField]
     public TextMeshProUGUI Chest_Output_TMP;
-    [SerializeField]
-    public string OutputPath;
+    
     [SerializeField]
     public GameObject Chest_OutputUI;
-    public bool inChest = false;
+
     private bool alreadyGenerated;
     private LootChest myChest;
+    private int lootCount;
+
+    public ToolGenerator toolGenerator;
 
     void Start()
     {
@@ -44,25 +27,17 @@ public class LootChest : MonoBehaviour
 		btn.onClick.AddListener(Open);
         Chest_OutputUI.SetActive(false);
     }
-    void Update()
-    {
-    }
-
+ 
     // call this function to open chest 
     public void Open(){
 
         // generates a new chest with loot if 1: chest has not been opened 2: chest allows for regeneration of loot upon open
         // else display existing chest's already generated loot 
-
-        if(!alreadyGenerated || allowChestRegeneration)
+        if(!alreadyGenerated)
         {
             Debug.Log("New chest created");
             myChest = LootChestGeneration(myChest);
            
-            if(!alreadyGenerated)
-            {
-                GetComponent<Animation>().Play();
-            }
             alreadyGenerated = true;
            
             displayOutput(myChest);
@@ -75,24 +50,10 @@ public class LootChest : MonoBehaviour
         
 	}
     // c# object that stores data about object created in csv file
-    public class gameItem 
-    {
-        public string rarity;
-        public string name;
-        // public int quantity;
-        public string type;
-        public string description;
-        public gameItem(string name, string rarity, string type, string description)
-        {
-            this.name = name;
-            this.rarity = rarity;
-            this.type = type;
-            this.description = description;
-        }
-    }
-    public List<gameItem> drops = new List<gameItem>();
+    
+    public List<Tool> drops = new List<Tool>();
     Dictionary <string, int> lootRarities = new  Dictionary<string, int>();
-    Dictionary <string, List<gameItem>> lootTable = new Dictionary<string, List<gameItem>>();
+    Dictionary <string, List<Tool>> lootTable = new Dictionary<string, List<Tool>>();
     
    
 
@@ -104,53 +65,19 @@ public class LootChest : MonoBehaviour
     */
     public LootChest LootChestGeneration(LootChest chest)
     {
-        List<List<gameItem>> batchDrops = new List<List<gameItem>>();
         if(!alreadyGenerated) //  This prevents a lootchest from having to reread the csv file every time it generates new loot
         {
-            chest.lootCount = lootCount;
-            chest.lootTable = chest.insertCustomLootTable(LootTableFilePath);
-            chest.lootRarities = chest.insertCustomRarities(Rarities, Rarity_Weights); 
+            chest.lootCount = 1;
+            chest.lootTable = toolGenerator.GetLootTable();
+            chest.lootRarities = toolGenerator.GetLootRarities();
+            Debug.Log("Chest Generated with " + chest.lootRarities.Count + " Rarities and " + chest.lootTable.Count + " total items.");
         }
        
             chest.drops = chest.GenerateLoot(chest.lootRarities, chest.lootCount);
 
         return chest;
     }
-    // Takes in a list of chests outputs, where each chest output is stored as a List of gameItems and overwrites them into filePath
-    // List<List<gameItems> allows for batch generation output 
-    public void outputToFile(string filePath, List<List<gameItem>> batchDrops)
-    {
-        StreamWriter writer;
-        int count = 1;
-        if(File.Exists(filePath))
-        {
-            writer = new StreamWriter(filePath, false);
-            foreach(var chestDrop in batchDrops)
-            {
-                writer.Write("Chest " + count + ": {");
-
-                   for (int i = 0; i < chestDrop.Count; i++)
-                    {
-                    writer.Write(chestDrop[i].name);
-
-                    if (i < chestDrop.Count - 1)
-                    {
-                        writer.Write(", ");
-                    }
-                            
-                    }
-                writer.Write("}");
-                writer.WriteLine();
-                count++;
-            }
-            writer.Close();
-        } 
-        else
-        {
-            Debug.LogError("Error: Output File not found.");
-        }
-
-    }
+   
         // Takes in a LootChest and displays it's generated loot to the Unity UI 
     public void displayOutput(LootChest currentChest)
     {
@@ -158,71 +85,12 @@ public class LootChest : MonoBehaviour
         Chest_OutputUI.SetActive(true);
         foreach(var drop in currentChest.drops)
         {
-            output += "1 x ("  + drop.rarity + ") " +  drop.name + "\n" ;
+            output += "1 x ("  + drop.Rarity + ") " +  drop.Name + "\n" ;
         }   
         Chest_Output_TMP.text = output; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
-    public Dictionary<string, int> insertCustomRarities(string[] rarities, int[]weights)
-    {
-     
-        Dictionary<string, int> customRarities = new Dictionary<string, int>();
-        if(rarities.Length != weights.Length)
-        {
-            Debug.LogError("ERROR Rarity Categories and Rarity Weights of unequal size"); // error caused by inspector rarities and rarity weights being mismatched
-            return customRarities;
-        }
-        for(int i = 0; i < rarities.Length; i++)
-        {
-            customRarities.Add(rarities[i],weights[i]);
-        }
-        return customRarities;
-    }
-
-    //Takes in .csv file path and parses it into a custom loot table dictionary
-    // outputs a dictionary storing the string of the rarity category, and a list of objects that exist within that rarity
-    public Dictionary<string, List<gameItem>> insertCustomLootTable(string filePath)
-    {
-        string path = filePath;
-        StreamReader reader;
-        Dictionary<string, List<gameItem>> customLootTable = new Dictionary<string, List<gameItem>>();
-        if(File.Exists(path))
-        {
-            reader = new StreamReader(File.OpenRead(path));
-            if(!reader.EndOfStream)
-            {
-                reader.ReadLine(); // skip header line
-            }
-            while(!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                string itemRarity = values[0];
-                string itemName = values[1];
-                string itemType = values[2];
-                string itemDescription = values[3];
-                gameItem newItem = new gameItem (itemName, itemRarity, itemType, itemDescription);
-
-                // if item rarity key already exists, add newItem to the list, else create new rarity key with a new list of items. 
-                if(customLootTable.ContainsKey(itemRarity))
-                {
-                    customLootTable[itemRarity].Add(newItem);
-                }
-                else
-                {
-                    customLootTable.Add(itemRarity, new List<gameItem> {newItem});
-                }
-                 
-            }
-            reader.Close();
-            return customLootTable;
-        }
-        else
-        {
-            Debug.LogError("Error: File not found.");
-            return customLootTable;
-        }
-    }
+   
     
     /* This is the main function that generates the loot from the loot table. 
       Takes in a Dictionary of custom rarities and their corresponding weights, and an integer for how many items to generate from the loot table, 
@@ -236,10 +104,10 @@ public class LootChest : MonoBehaviour
             5: When a rarity is selected add it to the output dictionary. If already existing increment it's counter. 
             6: With the selected rarities, randomly select items from the loot table based on the number of items per rarity. 
     */
-    public List<gameItem> GenerateLoot(Dictionary<string, int> myRarity, int lootCount = 1 ) //
+    public List<Tool> GenerateLoot(Dictionary<string, int> myRarity, int lootCount = 1 ) //
     {
         Dictionary <string, int> selectedRarity = new Dictionary<string, int>();
-        List<gameItem> selectedItems = new List<gameItem>();
+        List<Tool> selectedItems = new List<Tool>();
         System.Random rand = new System.Random();
         int weightedSum = 0;
 
@@ -285,7 +153,7 @@ public class LootChest : MonoBehaviour
             for(int i = 0; i < r.Value; i++)
             {
                 var itemList = lootTable[r.Key]; 
-                gameItem selectedItem = itemList[rand.Next(0,itemList.Count)];
+                Tool selectedItem = itemList[rand.Next(0,itemList.Count)];
                 selectedItems.Add(selectedItem);
             }
         }   

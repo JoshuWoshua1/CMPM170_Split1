@@ -119,11 +119,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &88431478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 517568025883868688, guid: fb31131ac122b1541badb36f19170811, type: 3}
+  m_PrefabInstance: {fileID: 1167500190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &88431482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8428554483130498969, guid: fb31131ac122b1541badb36f19170811, type: 3}
   m_PrefabInstance: {fileID: 1167500190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &88431483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88431478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039600c25d1ec294889edc660a4116f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToolGenerator
+  LootTableFilePath: Assets/Imported Assets/Loot Chest/Assets/Loot Table .csv Files/LootDrops.csv
+  lootTableTextAsset: {fileID: 0}
+  lootTableResourcePath: 
+  Rarities:
+  - Common
+  - Uncommon
+  - Rare
+  - Epic
+  - Legendary
+  Rarity_Weights: 370000001e0000000f0000000600000001000000
 --- !u!1 &563215441
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,9 +471,17 @@ PrefabInstance:
       value: Loot Chest
       objectReference: {fileID: 0}
     - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
       propertyPath: GenerateBTN
       value: 
       objectReference: {fileID: 1692689644}
+    - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
+      propertyPath: toolGenerator
+      value: 
+      objectReference: {fileID: 88431483}
     - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
       propertyPath: LootTableFilePath
       value: Assets/Imported Assets/Loot Chest/Assets/Loot Table .csv Files/LootDrops.csv
@@ -515,7 +550,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8428554483130498969, guid: fb31131ac122b1541badb36f19170811, type: 3}
       insertIndex: -1
       addedObject: {fileID: 713498997}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 517568025883868688, guid: fb31131ac122b1541badb36f19170811, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 88431483}
   m_SourcePrefab: {fileID: 100100000, guid: fb31131ac122b1541badb36f19170811, type: 3}
 --- !u!1 &1692689642
 GameObject:
