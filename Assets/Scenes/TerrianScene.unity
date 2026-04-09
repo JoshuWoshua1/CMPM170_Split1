@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600534338}
-  - component: {fileID: 1600534337}
+  - component: {fileID: 1600534339}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -273,27 +273,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1600534337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600534336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e33897378944a5349b6535a38b776d3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TerrianGeneration
-  worldwidth: 50
-  worldheight: 100
-  dirtLayerHeight: 5
-  seed: 0
-  heightMultiplier: 20
-  noiseFrequency: 0.05
-  stone: {fileID: 5725184139431673129, guid: 6cc50b3c778b4a64bb126a1d95834f1e, type: 3}
-  grass: {fileID: -7958769179885505039, guid: 2ae87f176543eb54cb7d5a1b80a2bf62, type: 3}
-  dirt: {fileID: 5634026908348037240, guid: 3110b85a016e60141803107727f0af93, type: 3}
 --- !u!4 &1600534338
 Transform:
   m_ObjectHideFlags: 0
@@ -309,6 +288,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600534339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600534336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33897378944a5349b6535a38b776d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TerrianGeneration
+  worldwidth: 50
+  worldheight: 100
+  dirtLayerHeight: 20
+  seed: 0
+  heightMultiplier: 20
+  noiseFrequency: 0.05
+  transitionNoiseFrequency: 0.1
+  transitionVariation: 5
+  oreNoiseFrequency: 0.1
+  goldPatchSize: 0.6
+  goldMinDepth: 10
+  goldMaxDepth: 50
+  stone: {fileID: 2758737170363901286, guid: d95e22720bd6003429eba042043ec8dd, type: 3}
+  grass: {fileID: -7958769179885505039, guid: 2ae87f176543eb54cb7d5a1b80a2bf62, type: 3}
+  dirt: {fileID: 5634026908348037240, guid: 3110b85a016e60141803107727f0af93, type: 3}
+  gold: {fileID: -6851385776335332034, guid: daadeffb7744b9143924a5ca49579d5b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

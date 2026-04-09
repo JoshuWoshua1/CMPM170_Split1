@@ -7,13 +7,25 @@ public class TerrianGeneration : MonoBehaviour
     public int worldheight = 100;
     public int dirtLayerHeight = 20;
     public float seed;
+
     public float heightMultiplier = 20f;
     public float noiseFrequency = 0.05f;
+
+    public float transitionNoiseFrequency = 0.5f;
+    public float transitionVariation = 5f;
+
+    public float oreNoiseFrequency = 0.1f;
+    public float goldPatchSize = 0.6f;
+    public int goldMinDepth = 20;
+    public int goldMaxDepth = 50;
+
 
     
     public Sprite stone;
     public Sprite grass;
     public Sprite dirt;
+    public Sprite gold;
+
     
     private void Start()
     {   
@@ -27,7 +39,8 @@ public class TerrianGeneration : MonoBehaviour
         {
             
             float height = Mathf.PerlinNoise((x + seed) * noiseFrequency, seed * noiseFrequency) * heightMultiplier;
-            for(int y = 0; y < height; y++)
+            float transitionLine = dirtLayerHeight + Mathf.PerlinNoise((x + seed) * transitionNoiseFrequency, seed) * transitionVariation;
+            for(int y = 0; y < worldheight; y++)
             {
                 float transitionNoise = Mathf.PerlinNoise(x * 0.1f, y * 0.1f);
                 Sprite tileSprite;
@@ -36,18 +49,20 @@ public class TerrianGeneration : MonoBehaviour
                 {
                     tileSprite = grass;
                 }
-                else if (y < dirtLayerHeight - 1)
+                else if (y < transitionLine)
                 {
-                    if (transitionNoise > 0.35f)
-                        tileSprite = dirt;
-                    else 
-                    {
-                        tileSprite = stone;
-                    }
+                    tileSprite = dirt;
                 }
                 else
                 {
-                    tileSprite = stone;
+                    float goldNoise = Mathf.PerlinNoise((x + seed) * oreNoiseFrequency, (y + seed) * oreNoiseFrequency);
+                    bool isGoldPatch = (y > goldMinDepth && y < goldMaxDepth) && goldNoise > .7f;
+                    if (isGoldPatch)
+                    {
+                        tileSprite = gold;
+                    }  
+                    else
+                        tileSprite = stone;
                 }
                 GameObject newTile = new GameObject(name = "tile");
                 newTile.AddComponent<SpriteRenderer>();
