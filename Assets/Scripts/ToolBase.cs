@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ToolBase : MonoBehaviour
 {
@@ -24,22 +25,28 @@ public class ToolBase : MonoBehaviour
         // Remove tool from player here
     }
 
-    public void tryUseTool() // checks if tool can be used based on its cooldown
+    public void tryUseTool(Vector3Int targetCoordinate) // checks if tool can be used based on its cooldown
     {
         if (Time.time >= nextUseTime)
         {
-            UseTool();
+            UseTool(targetCoordinate);
         }
         else
         {
             Debug.Log(toolName + " is on cooldown. Please wait.");
         }
     }
-    public void UseTool() // main logic for using the tool, checks durability and applies damage to blocks
+    public void UseTool(Vector3Int targetCoordinate) // main logic for using the tool, checks durability and applies damage to blocks
     {
         if (toolDurability > 0)
         {
-            MineBlock(toolDamage);
+            List<Vector3Int> affectedTiles = GetAffectedTiles(targetCoordinate);
+
+            foreach (Vector3Int tileCoordinate in affectedTiles)
+            {
+                MineBlock(tileCoordinate, toolDamage);
+            }
+
             Debug.Log("Using " + toolName + " for " + toolDamage + " damage.");
             toolDurability--;
             if (toolActionSpeed > 0)
@@ -58,6 +65,11 @@ public class ToolBase : MonoBehaviour
         }
     }
 
+    protected virtual List<Vector3Int> GetAffectedTiles(Vector3Int targetCoordinate)
+    {
+        return new List<Vector3Int> { targetCoordinate };
+    }
+
     private void ToolBroken()
     {
         Debug.Log(toolName + " has broken!");
@@ -65,10 +77,10 @@ public class ToolBase : MonoBehaviour
         OnUnequip();
     }
 
-    private void MineBlock(int damage)
+    private void MineBlock(Vector3Int tileCoordinate, int damage)
     {
         // Placeholder for block mining logic
-        Debug.Log(toolName + " is mining a block for " + damage + " damage.");
+        Debug.Log(toolName + " is mining block at " + tileCoordinate + " for " + damage + " damage.");
         // if block.hp > damagem, block.hp -= damage; else block is destroyed
     }
 

@@ -1,17 +1,14 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class Pickaxe : ToolBase
+public class Drill : ToolBase
 {
     [Header("Tool Settings")]
-    public string toolName = "Pickaxe";
+    public string toolName = "Drill";
     public int toolBaseDamage = 1;
-    public int toolBaseDurability = 15;
-    public int toolBaseActionSpeed = 1;
+    public int toolBaseDurability = 150;
+    public int toolBaseActionSpeed = 10;
     public List<int> toolRarityRange = new List<int> { 1, 2, 3 };
-    public int miningAreaSize = 1; // Size of the area affected by the pickaxe (e.g., 1 for single block, 3 for 3x3 area)
-
     void Start()
     {
         toolDamage = toolBaseDamage;
@@ -25,18 +22,10 @@ public class Pickaxe : ToolBase
     {
         List<Vector3Int> affectedTiles = new List<Vector3Int>();
 
-        int halfSize = miningAreaSize / 2;
-        for (int x = -halfSize; x <= halfSize; x++)
-        {
-            for (int y = -halfSize; y <= halfSize; y++)
-            {
-                for (int z = -halfSize; z <= halfSize; z++)
-                {
-                    affectedTiles.Add(new Vector3Int(targetCoordinate.x + x, targetCoordinate.y + y, targetCoordinate.z + z));
-                }
-            }
-        }
+        // Drill affects a 1x1 area (just the targeted block)
+        affectedTiles.Add(targetCoordinate);
 
         return affectedTiles;
     }
+
 }
