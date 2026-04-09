@@ -13,9 +13,11 @@ public class ToolGenerator : MonoBehaviour
     [SerializeField] private string lootTableResourcePath;
     [SerializeField] private string[] Rarities = new string[] { "Common", "Uncommon", "Rare", "Epic", "Legendary" };
     [SerializeField] private int[] Rarity_Weights = new int[] { 55, 30, 15, 6, 1 };
+    [SerializeField] private List<ToolBase> toolPrefabs = new List<ToolBase>();
 
     private void Awake()
     {
+        BuildToolArchetypeLookup();
         LoadLoot();
     }
 
@@ -23,6 +25,7 @@ public class ToolGenerator : MonoBehaviour
     
     private Dictionary<string, int> lootRarities = new Dictionary<string, int>();
     private Dictionary<string, List<Tool>> lootTable = new Dictionary<string, List<Tool>>();
+    private Dictionary<string, ToolBase> toolArchetypeLookup = new Dictionary<string, ToolBase>(StringComparer.OrdinalIgnoreCase);
     
    
 
@@ -87,9 +90,10 @@ public class ToolGenerator : MonoBehaviour
             int ToolDurability = Int32.Parse(values[3].Trim());
             int ToolMiningSpeed = Int32.Parse(values[4].Trim());
             int ToolMiningDamage = Int32.Parse(values[5].Trim());
+            string ToolType = values.Length > 6 ? values[6].Trim() : "Pickaxe"; // pickaxe is default type if not specified
             Debug.Log($"Creating Tool of:  - Rarity: {ToolRarity}, Name: {ToolName}, Durability: {ToolDurability}, Mining Speed: {ToolMiningSpeed}, Mining Damage: {ToolMiningDamage}");
             
-            Tool newTool = new Tool(ToolRarity, ToolName, ToolDescription, ToolDurability, ToolMiningSpeed, ToolMiningDamage, imageIndex);
+            Tool newTool = new Tool(ToolRarity, ToolName, ToolDescription, ToolDurability, ToolMiningSpeed, ToolMiningDamage, imageIndex, ToolType);
 
             // if item rarity key already exists, add newItem to the list, else create new rarity key with a new list of items.
             if (customLootTable.ContainsKey(ToolRarity))
@@ -113,6 +117,89 @@ public class ToolGenerator : MonoBehaviour
     {
         
         return lootRarities;
+    }
+
+    // spawns a tool prefab based on the provided Tool data, using the tool type to determine which prefab to use. Initializes the spawned tool with the provided data and optional icon.
+    public ToolBase SpawnToolFromData(Tool toolData, Vector3 spawnPosition, Quaternion spawnRotation, Transform parent = null, Sprite icon = null)
+    {
+        if (toolData == null)
+        {
+            Debug.LogWarning("SpawnToolFromData called with null tool data.", this);
+            return null;
+        }
+
+        if (!TryGetToolPrefab(toolData, out ToolBase toolPrefab))
+        {
+            Debug.LogWarning($"No tool prefab mapping found for type '{toolData.ToolType}'.", this);
+            return null;
+        }
+
+        ToolBase spawnedTool = parent == null
+            ? Instantiate(toolPrefab, spawnPosition, spawnRotation)
+            : Instantiate(toolPrefab, spawnPosition, spawnRotation, parent);
+
+        spawnedTool.InitializeFromData(toolData, icon);
+        return spawnedTool;
+    }
+
+    // builds a lookup dictionary for tool archetypes based on the list of ToolArchetypeEntry defined in the inspector, allowing for quick retrieval of tool prefabs based on tool type during spawning. 
+    // Also includes error handling for duplicate or invalid entries.
+    private void BuildToolArchetypeLookup()
+    {
+        toolArchetypeLookup.Clear();
+
+        for (int i = 0; i < toolPrefabs.Count; i++)
+        {
+            ToolBase prefab = toolPrefabs[i];
+            if (prefab == null)
+            {
+                continue;
+            }
+
+            string prefabKey = prefab.name;
+            if (string.IsNullOrWhiteSpace(prefabKey))
+            {
+                continue;
+            }
+
+            if (toolArchetypeLookup.ContainsKey(prefabKey))
+            {
+                Debug.LogWarning($"Duplicate tool archetype mapping for prefab name '{prefabKey}'. Keeping first mapping.", this);
+                continue;
+            }
+
+            toolArchetypeLookup.Add(prefabKey, prefab);
+        }
+    }
+
+    // Helper method to retrieve a tool prefab based on tool type, with fallback to default and first available prefab if specific type is not found. 
+    // Returns true if a prefab is found, false otherwise.
+    private bool TryGetToolPrefab(Tool toolData, out ToolBase toolPrefab)
+    {
+        if (toolData != null)
+        {
+            if (!string.IsNullOrWhiteSpace(toolData.ToolType) && toolArchetypeLookup.TryGetValue(toolData.ToolType, out toolPrefab))
+            {
+                return true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(toolData.Name) && toolArchetypeLookup.TryGetValue(toolData.Name, out toolPrefab))
+            {
+                return true;
+            }
+        }
+
+        foreach (KeyValuePair<string, ToolBase> entry in toolArchetypeLookup)
+        {
+            if (entry.Value != null)
+            {
+                toolPrefab = entry.Value;
+                return true;
+            }
+        }
+
+        toolPrefab = null;
+        return false;
     }
 
  // Not Sure what these are used for

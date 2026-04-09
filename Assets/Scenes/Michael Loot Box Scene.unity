@@ -151,6 +151,10 @@ MonoBehaviour:
   - Epic
   - Legendary
   Rarity_Weights: 370000001e0000000f0000000600000001000000
+  toolPrefabs:
+  - {fileID: 313252930551372848, guid: caa9b00fc23cef349ad57a65de8f5b09, type: 3}
+  - {fileID: 7647417081484496581, guid: 305978d220c4b86498571856bf702db0, type: 3}
+  - {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
 --- !u!1 &563215441
 GameObject:
   m_ObjectHideFlags: 0

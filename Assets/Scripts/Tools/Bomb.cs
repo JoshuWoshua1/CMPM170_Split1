@@ -1,22 +1,16 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Bomb : ToolBase
 {
-    [Header("Tool Settings")]
-    public string toolName = "Bomb";
-    public int toolBaseDamage = 5;
-    public int toolBaseDurability = 5;
-    public int toolBaseActionSpeed = 1;
-    public List<int> toolRarityRange = new List<int> { 1, 2, 3 };
+    [Header("Bomb Settings")]
+    // public List<int> toolRarityRange = new List<int> { 1, 2, 3 };
     public int explosionRadius = 10; // Radius of the explosion effect
     void Start()
     {
-        toolDamage = toolBaseDamage;
-        toolDurability = toolBaseDurability;
-        toolActionSpeed = toolBaseActionSpeed;
-        toolRarityLevel = toolRarityRange[Random.Range(0, toolRarityRange.Count)];
-        Debug.Log("Created " + toolName + " with damage: " + toolDamage + ", durability: " + toolDurability + ", action speed: " + toolActionSpeed + ", rarity level: " + toolRarityLevel);
+        // toolRarityLevel = toolRarityRange[Random.Range(0, toolRarityRange.Count)];
+        Debug.Log("Created " + toolName + " with damage: " + toolDamage + ", durability: " + toolDurability + ", action speed: " + toolActionSpeed);
     }
 
     public override void UseTool(Vector3Int targetCoordinate) // override to implement bomb-specific behavior, such as affecting a larger area and applying damage in an explosion radius

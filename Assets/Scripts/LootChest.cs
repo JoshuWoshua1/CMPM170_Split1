@@ -41,18 +41,21 @@ public class LootChest : MonoBehaviour
             alreadyGenerated = true;
            
             displayOutput(myChest);
+            SpawnLootDrops(myChest.drops);
         }
         else
         {
-            Debug.Log("Chest already Exists");
+            Debug.Log("Chest already Exists generating new one");
+            myChest = LootChestGeneration(myChest);
             displayOutput(myChest);
+            SpawnLootDrops(myChest.drops);
         }
         
 	}
     // c# object that stores data about object created in csv file
     
     public List<Tool> drops = new List<Tool>();
-    Dictionary <string, int> lootRarities = new  Dictionary<string, int>();
+    Dictionary <string, int> lootRarities = new Dictionary<string, int>();
     Dictionary <string, List<Tool>> lootTable = new Dictionary<string, List<Tool>>();
     
    
@@ -164,6 +167,20 @@ public class LootChest : MonoBehaviour
     public void closeOutputWindow()
     {
         Chest_OutputUI.SetActive(false);
+    }
+
+    private void SpawnLootDrops(List<Tool> dropsToSpawn)
+    {
+        if (toolGenerator == null || dropsToSpawn == null || dropsToSpawn.Count == 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < dropsToSpawn.Count; i++)
+        {
+            Tool drop = dropsToSpawn[i];
+            toolGenerator.SpawnToolFromData(drop, Vector3.zero, Quaternion.identity, null, null);
+        }
     }
 }
 
