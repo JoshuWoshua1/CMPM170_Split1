@@ -20,6 +20,7 @@ public class LootChest : MonoBehaviour
     [SerializeField]
     public GameObject Chest_OutputUI;
     public  ToolGenerator toolGenerator;
+    public SpriteManager spriteManager;
 
     private bool alreadyGenerated;
     private int lootCount;
@@ -96,8 +97,7 @@ public class LootChest : MonoBehaviour
         {
             output = drop.Name + "\n" ;
         }  
-        Chest_Item_PFP.color = new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f),1);
-        Chest_Output_TMP.text = output;
+        Chest_Item_PFP.texture = spriteManager.toolSprites[currentChest.drops[0].ImageIndex];
         Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
