@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(speedX, speedY);
 
         // Update animator parameters
-        animator.SetFloat("Horizontal", speedX);
-        animator.SetFloat("Vertical", speedY);
+        animator.SetFloat("Horizontal", horizontalInput);
+        animator.SetFloat("Vertical", verticalInput);
     }
 }
