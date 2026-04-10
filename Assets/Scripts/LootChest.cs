@@ -97,7 +97,7 @@ public class LootChest : MonoBehaviour
         {
             output = drop.Name + "\n" ;
         }  
-        Chest_Item_PFP.texture = spriteManager.toolSprites[currentChest.drops[0].ImageIndex];
+        Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
         Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
