@@ -5,10 +5,9 @@ public class TerrianGeneration : MonoBehaviour
 
     public int worldwidth = 50;
     public int worldheight = 100;
-    public int dirtLayerHeight = 20;
+    public int dirtLayerHeight = 5;
+   
     public float seed;
-
-    public float heightMultiplier = 20f;
     public float noiseFrequency = 0.05f;
 
     public float transitionNoiseFrequency = 0.5f;
@@ -16,8 +15,8 @@ public class TerrianGeneration : MonoBehaviour
 
     public float oreNoiseFrequency = 0.1f;
     public float goldPatchSize = 0.6f;
-    public int goldMinDepth = 20;
-    public int goldMaxDepth = 50;
+    public int goldMinDepth = 40;
+    public int goldMaxDepth = 60;
 
 
     
@@ -37,8 +36,6 @@ public class TerrianGeneration : MonoBehaviour
     {
         for(int x = 0; x < worldwidth; x++)
         {
-            
-            float height = Mathf.PerlinNoise((x + seed) * noiseFrequency, seed * noiseFrequency) * heightMultiplier;
             float transitionLine = dirtLayerHeight + Mathf.PerlinNoise((x + seed) * transitionNoiseFrequency, seed) * transitionVariation;
             for(int y = 0; y < worldheight; y++)
             {
