@@ -44,7 +44,6 @@ public class TempPlayer : MonoBehaviour
             // Assuming the player is facing right for simplicity; you can add logic to determine facing direction
             Vector3Int targetCoordinate = new Vector3Int(Mathf.RoundToInt(transform.position.x + mouseDirection.x), Mathf.RoundToInt(transform.position.y + mouseDirection.y), 0);
             equippedTool.tryUseTool(targetCoordinate);
-            equippedTool.ToolAnimate(toolPivot.position);
         }
     }
 
