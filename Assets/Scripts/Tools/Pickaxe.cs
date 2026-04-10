@@ -32,4 +32,12 @@ public class Pickaxe : ToolBase
 
         return affectedTiles;
     }
+
+    /*
+    public override void ToolAnimate(Vector2 position)
+    {
+        // Placeholder for pickaxe-specific animation logic
+        Debug.Log("Animating " + toolName + " with a swinging motion at position " + position);
+    }
+    */
 }

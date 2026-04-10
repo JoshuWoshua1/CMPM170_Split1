@@ -23,4 +23,11 @@ public class Drill : ToolBase
         return affectedTiles;
     }
 
+    /*
+    public override void ToolAnimate(Vector2 position)
+    {
+        // Placeholder for drill-specific animation logic
+        Debug.Log("Animating " + toolName + " with a drilling motion at position " + position);
+    }
+    */
 }
