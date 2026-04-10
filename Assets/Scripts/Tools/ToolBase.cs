@@ -158,6 +158,7 @@ public class ToolBase : MonoBehaviour
     {
         Debug.Log(toolName + " has broken!");
         // placeholder for vfx or other things attatched to tools breaking
+        // maybe make particles that use the tools colors like in minecraft?
         OnUnequip();
     }
 
@@ -166,6 +167,13 @@ public class ToolBase : MonoBehaviour
         // Placeholder for block mining logic
         Debug.Log(toolName + " is mining block at " + tileCoordinate + " for " + damage + " damage.");
         // if block.hp > damagem, block.hp -= damage; else block is destroyed
+    }
+
+    public virtual void ToolAnimate(Vector2 position)
+    {
+        // Placeholder for tool animation logic
+        Debug.Log(toolName + "has no animation. spawned at position " + position);
+        
     }
 
 }

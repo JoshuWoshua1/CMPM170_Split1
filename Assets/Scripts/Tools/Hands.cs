@@ -2,9 +2,9 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Drill : ToolBase
+public class Hands : ToolBase
 {
-    [Header("Drill Settings")]
+    [Header("Hands Settings")]
     public string temp = "na";
     // public List<int> toolRarityRange = new List<int> { 1, 2, 3 };
     void Start()
@@ -17,7 +17,7 @@ public class Drill : ToolBase
     {
         List<Vector3Int> affectedTiles = new List<Vector3Int>();
 
-        // Drill affects a 1x1 area (just the targeted block)
+        // Hands affect a 1x1 area (just the targeted block)
         affectedTiles.Add(targetCoordinate);
 
         return affectedTiles;
@@ -26,8 +26,9 @@ public class Drill : ToolBase
     /*
     public override void ToolAnimate(Vector2 position)
     {
-        // Placeholder for drill-specific animation logic
-        Debug.Log("Animating " + toolName + " with a drilling motion at position " + position);
+        // Placeholder for hands-specific animation logic
+        Debug.Log("Animating " + toolName + " with a punching motion at position " + position);
     }
     */
+
 }
