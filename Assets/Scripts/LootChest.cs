@@ -6,18 +6,18 @@ using UnityEngine.UI;
 using TMPro;
 
 using System;
+using Unity.VisualScripting;
 public class LootChest : MonoBehaviour
 {
    
     public Button GenerateBTN;
-    [SerializeField]
     public TextMeshProUGUI Chest_Output_TMP;
-     [SerializeField]
     public TextMeshProUGUI Chest_Item_Description_TMP;
-    [SerializeField]
+
     public RawImage Chest_Item_PFP;
     
-    [SerializeField]
+    public GameObject lootHighlight;
+
     public GameObject Chest_OutputUI;
     public  ToolGenerator toolGenerator;
     public SpriteManager spriteManager;
@@ -91,12 +91,33 @@ public class LootChest : MonoBehaviour
         // Takes in a LootChest and displays it's generated loot to the Unity UI 
     public void displayOutput(LootChest currentChest)
     {
-        string output = "";
+         string output = "";
         Chest_OutputUI.SetActive(true);
         foreach(var drop in currentChest.drops)
         {
             output = drop.Name + "\n" ;
         }  
+        if(currentChest.drops[0].Rarity == "Common")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.gray3;
+        }
+        else if(currentChest.drops[0].Rarity == "Uncommon")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.forestGreen;
+        }
+        else if(currentChest.drops[0].Rarity == "Rare")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.darkBlue;
+        }
+        else if(currentChest.drops[0].Rarity == "Epic")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.mediumPurple;
+        }
+        else if(currentChest.drops[0].Rarity == "Legendary")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.gold;
+        }
+        Chest_Output_TMP.text = currentChest.drops[0].Name;
         Chest_Item_PFP.texture = spriteManager.toolSprites[currentChest.drops[0].ImageIndex];
         Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
