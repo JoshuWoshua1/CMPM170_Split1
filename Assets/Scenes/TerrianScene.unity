@@ -300,6 +300,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33897378944a5349b6535a38b776d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TerrianGeneration
+  grassBlock: {fileID: 2277112438272813289, guid: b42dff9d55e33b749b96c17e8a3b3a40, type: 3}
+  dirtBlock: {fileID: 3560131336447375462, guid: fd1df02b5b087264285b93784dddfe43, type: 3}
+  stoneBlock: {fileID: 6323844383709346214, guid: ba42649c4426a6842bd047417f38de35, type: 3}
+  goldBlock: {fileID: 8384629381150225734, guid: 7c0f18686176fea44804ba2b7d43885b, type: 3}
+  diamondBlock: {fileID: 8012136841692083965, guid: b5191e8cfb37646449932c96f267845b, type: 3}
+  rubyBlock: {fileID: 5255284878781869691, guid: aca9b0e2dd7275d4b9b0cf54a79c61b9, type: 3}
+  emeraldBlock: {fileID: 8770075000882314427, guid: 716b53fa0e92fe84884ab4a0c6ca03c1, type: 3}
+  greystoneBlock: {fileID: 1707040914891825088, guid: 8d0ff4ef45eb1224b825bc08ab89d21b, type: 3}
   worldwidth: 50
   worldheight: 100
   dirtLayerHeight: 10
