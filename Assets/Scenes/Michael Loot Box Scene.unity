@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471eeaf5655e0dc4d9265c86b0909d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
-  toolSprites:
+  ToolRawImages:
   - {fileID: 2800000, guid: a1b9fdedc63077d4d91570ba30b84e90, type: 3}
   - {fileID: 2800000, guid: 923b5801cd6af894fbe160613c3390e5, type: 3}
   - {fileID: 2800000, guid: 9f48dddbd25edfd4dba2fa0e99ab7a34, type: 3}
@@ -931,6 +931,16 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 45ab98c62dfaf6a41858c36f191df369, type: 3}
   - {fileID: 2800000, guid: 557b6ba822c6c3842b11e72bba911f95, type: 3}
   - {fileID: 2800000, guid: e816be59806af234a8eefcf1c96d1fe2, type: 3}
+  toolSprites:
+  - {fileID: 796544688495589534, guid: a1b9fdedc63077d4d91570ba30b84e90, type: 3}
+  - {fileID: -5268182272350803925, guid: 923b5801cd6af894fbe160613c3390e5, type: 3}
+  - {fileID: -3193773881840609227, guid: 9f48dddbd25edfd4dba2fa0e99ab7a34, type: 3}
+  - {fileID: -3129494363929656337, guid: 42bc45fc7cd33de4198fb4f312142c9c, type: 3}
+  - {fileID: -1856921420205746137, guid: c41ab2e9ee76f8b45b945b23cab380cf, type: 3}
+  - {fileID: -7086341984765242785, guid: dd9b3a3f6b63d69438005643bfbaa208, type: 3}
+  - {fileID: -8589009565848297237, guid: 45ab98c62dfaf6a41858c36f191df369, type: 3}
+  - {fileID: 6751002202477829170, guid: 557b6ba822c6c3842b11e72bba911f95, type: 3}
+  - {fileID: 1196602187458259825, guid: e816be59806af234a8eefcf1c96d1fe2, type: 3}
 --- !u!4 &963493935
 Transform:
   m_ObjectHideFlags: 0
