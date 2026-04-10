@@ -302,20 +302,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TerrianGeneration
   worldwidth: 50
   worldheight: 100
-  dirtLayerHeight: 20
+  dirtLayerHeight: 10
   seed: 0
-  heightMultiplier: 20
+  heightMultiplier: 5
   noiseFrequency: 0.05
   transitionNoiseFrequency: 0.1
-  transitionVariation: 5
-  oreNoiseFrequency: 0.1
-  goldPatchSize: 0.6
-  goldMinDepth: 10
-  goldMaxDepth: 50
+  transitionVariation: 20
+  goldoreNoiseFrequency: 0.5
+  goldMinDepth: 20
+  goldMaxDepth: 40
+  goldMaxDepthbuffer: 10
+  goldTransitionNoiseFrequency: 0.1
+  goldTransitionVariation: 10
+  diamondNoiseFrequency: 0.5
+  diamondMinDepth: 30
+  diamondMaxDepth: 60
+  diamondMaxDepthbuffer: 10
+  diamondTransitionNoiseFrequency: 0.15
+  diamondTransitionVariation: 15
+  rubyNoiseFrequency: 0.5
+  rubyMinDepth: 40
+  rubyMaxDepth: 70
+  rubyMaxDepthbuffer: 10
+  rubyTransitionNoiseFrequency: 0.2
+  rubyTransitionVariation: 15
+  emeraldNoiseFrequency: 0.5
+  emeraldMinDepth: 50
+  emeraldMaxDepth: 80
+  emeraldMaxDepthbuffer: 10
+  emeraldTransitionNoiseFrequency: 0.25
+  emeraldTransitionVariation: 15
   stone: {fileID: 2758737170363901286, guid: d95e22720bd6003429eba042043ec8dd, type: 3}
+  greystone: {fileID: 2722764875039477695, guid: 4ba588f5e4c005c47976ef1dc4714dbb, type: 3}
   grass: {fileID: -7958769179885505039, guid: 2ae87f176543eb54cb7d5a1b80a2bf62, type: 3}
   dirt: {fileID: 5634026908348037240, guid: 3110b85a016e60141803107727f0af93, type: 3}
   gold: {fileID: -6851385776335332034, guid: daadeffb7744b9143924a5ca49579d5b, type: 3}
+  diamond: {fileID: 3532146273704821803, guid: 06edfc141a5b3b24089f430435d952a8, type: 3}
+  ruby: {fileID: 8282347245726058188, guid: 0fdca1cadccf2334c9ee23c9bcdf555a, type: 3}
+  emerald: {fileID: -6300370248995068211, guid: 6a0aed56ce2d12c488596911ea4c6f7f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
