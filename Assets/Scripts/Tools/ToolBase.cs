@@ -165,9 +165,23 @@ public class ToolBase : MonoBehaviour
 
     public void MineBlock(Vector3Int tileCoordinate, int damage)
     {
-        // Placeholder for block mining logic
-        Debug.Log(toolName + " is mining block at " + tileCoordinate + " for " + damage + " damage.");
-        // if block.hp > damagem, block.hp -= damage; else block is destroyed
+        Vector3 worldPosition = new Vector3(tileCoordinate.x, tileCoordinate.y, tileCoordinate.z);
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(worldPosition, 0.5f);
+
+        foreach (Collider2D hit in hits)
+        {
+            Destroyable destroyable = hit.GetComponent<Destroyable>();
+
+            if (destroyable != null)
+            {
+                destroyable.TakeDamage(damage);
+                Debug.Log(toolName + " damaged " + hit.gameObject.name + " for " + damage + " damage.");
+                return;
+            }
+        }
+
+        Debug.Log(toolName + " tried to mine at " + tileCoordinate + " but found no destroyable object.");
     }
 
     public virtual IEnumerator ToolAnimate()
