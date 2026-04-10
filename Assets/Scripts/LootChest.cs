@@ -47,14 +47,14 @@ public class LootChest : MonoBehaviour
             alreadyGenerated = true;
            
             displayOutput(myChest);
-            SpawnLootDrops(myChest.drops);
+            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
         }
         else
         {
             Debug.Log("Chest already Exists generating new one");
             myChest = LootChestGeneration(myChest);
             displayOutput(myChest);
-            SpawnLootDrops(myChest.drops);
+            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
         }
         
 	}

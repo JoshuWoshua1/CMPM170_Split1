@@ -114,6 +114,7 @@ public class ToolBase : MonoBehaviour
         if (Time.time >= nextUseTime)
         {
             UseTool(targetCoordinate);
+            StartCoroutine(ToolAnimate());
         }
         else
         {
@@ -158,6 +159,7 @@ public class ToolBase : MonoBehaviour
     {
         Debug.Log(toolName + " has broken!");
         // placeholder for vfx or other things attatched to tools breaking
+        // maybe make particles that use the tools colors like in minecraft?
         OnUnequip();
     }
 
@@ -166,6 +168,18 @@ public class ToolBase : MonoBehaviour
         // Placeholder for block mining logic
         Debug.Log(toolName + " is mining block at " + tileCoordinate + " for " + damage + " damage.");
         // if block.hp > damagem, block.hp -= damage; else block is destroyed
+    }
+
+    public virtual IEnumerator ToolAnimate()
+    {
+        // Placeholder for tool animation logic
+        Debug.Log(toolName + "has no animation.");
+
+        toolSprite.transform.localScale = new Vector2(8f, 8f); // example animation effect, scales the sprite up slightly when used
+        yield return new WaitForSeconds(0.5f); // wait for a short duration to simulate animation timing
+        toolSprite.transform.localPosition = new Vector2(0f,-4f); // reset position to prevent animation issues with different tools
+        toolSprite.transform.localRotation = Quaternion.Euler(0f, 0f, 135f); // reset rotation to prevent animation issues with different tools
+        toolSprite.transform.localScale = new Vector2(7f, 7f); // reset scale to prevent animation issues with different tools        
     }
 
 }
