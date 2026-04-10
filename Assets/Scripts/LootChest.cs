@@ -190,5 +190,17 @@ public class LootChest : MonoBehaviour
             toolGenerator.SpawnToolFromData(drop, Vector3.zero, Quaternion.identity, null, null);
         }
     }
+    public Tool getGeneratedTool()
+    {
+        if(drops != null && drops.Count > 0)
+        {
+            return drops[0];
+        }
+        else
+        {
+            Debug.Log("No tool generated yet.");
+            return null;
+        }
+    }
 }
 
