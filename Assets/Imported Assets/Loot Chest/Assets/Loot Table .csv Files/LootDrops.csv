@@ -1,6 +1,6 @@
 Rarity,Name,Description,Item Durability,Mining Speed,Mining Damage, ToolType
 Common,Wooden Pickaxe,A simple wooden Pickaxe,1,2,3,Pickaxe
-Common,Rusted Copper Axe,A slightly Rusted PickAxe. Strong but fragile,4,5,6,Pickaxe
+Common,Oxidized Copper Pickaxe,A slightly Rusted PickAxe. Strong but fragile,4,5,6,Pickaxe
 Common,Basic Shovel,A basic shovel ,7,8,9,Pickaxe
 Uncommon,Iron Pickaxe,An Iron Pickaxe. Reliable and sturdy,1,1,1,Pickaxe
 Uncommon,Hardened Shovel,A Hardened Shovel. Has Fast Digging Speeds,2,3,4,Pickaxe
