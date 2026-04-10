@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class TerrianGeneration : MonoBehaviour
 {   
+    public GameObject grassBlock;
+    public GameObject dirtBlock;
+    public GameObject stoneBlock;
+    public GameObject goldBlock;
+    public GameObject diamondBlock;
+    public GameObject rubyBlock;
+    public GameObject emeraldBlock;
+    public GameObject greystoneBlock;
 
     public int worldwidth = 50;
     public int worldheight = 100;
@@ -81,15 +89,15 @@ public class TerrianGeneration : MonoBehaviour
             for(int y = 0; y < worldheight; y++)
             {
                 float transitionNoise = Mathf.PerlinNoise(x * 0.1f, y * 0.1f);
-                Sprite tileSprite;
+                GameObject blocktoplace = null;
 
                 if (y == 0)
                 {
-                    tileSprite = grass;
+                    blocktoplace = grassBlock;
                 }
                 else if (y < transitionLine)
                 {
-                    tileSprite = dirt;
+                    blocktoplace = dirtBlock;
                 }
                 else if (y < goldtransitionLine)
                 {
@@ -97,10 +105,10 @@ public class TerrianGeneration : MonoBehaviour
                     bool isGoldPatch = (y > goldMinDepth && y < goldMaxDepth) && goldNoise > .7f;
                     if (isGoldPatch)
                     {
-                        tileSprite = gold;
+                        blocktoplace = goldBlock;
                     }  
                     else
-                        tileSprite = stone;
+                        blocktoplace = stoneBlock;
                 }
                 else if (y < diamondtransitionLine)
                 {
@@ -108,10 +116,10 @@ public class TerrianGeneration : MonoBehaviour
                     bool isDiamondPatch = (y > diamondMinDepth && y < diamondMaxDepth) && diamondNoise > .7f;
                     if (isDiamondPatch)
                     {
-                        tileSprite = diamond;
+                        blocktoplace = diamondBlock;
                     }  
                     else
-                        tileSprite = stone;
+                        blocktoplace = stoneBlock;
                 }
                 else if (y < rubytransitionLine)
                 {
@@ -119,10 +127,10 @@ public class TerrianGeneration : MonoBehaviour
                     bool isRubyPatch = (y > rubyMinDepth && y < rubyMaxDepth) && rubyNoise > .7f;
                     if (isRubyPatch)
                     {
-                        tileSprite = ruby;
+                        blocktoplace = rubyBlock;
                     }  
                     else
-                        tileSprite = greystone;
+                        blocktoplace = greystoneBlock;
                 }
                 else if (y < emeraldtransitionLine)
                 {
@@ -130,19 +138,19 @@ public class TerrianGeneration : MonoBehaviour
                     bool isEmeraldPatch = (y > emeraldMinDepth && y < emeraldMaxDepth) && emeraldNoise > .7f;
                     if (isEmeraldPatch)
                     {
-                        tileSprite = emerald;
+                        blocktoplace = emeraldBlock;
                     }  
                     else
-                        tileSprite = greystone;
+                        blocktoplace = greystoneBlock;
                 }
                 else
                 {
-                    tileSprite = greystone;
+                    blocktoplace = greystoneBlock;
                 }
 
                 GameObject newTile = new GameObject(name = "tile");
                 newTile.AddComponent<SpriteRenderer>();
-                newTile.GetComponent<SpriteRenderer>().sprite = tileSprite;
+                newTile.GetComponent<SpriteRenderer>().sprite = blocktoplace.GetComponent<SpriteRenderer>().sprite;
                 newTile.transform.position = new Vector2(x + 0.5f, -(y + 0.5f));
             }
         }
