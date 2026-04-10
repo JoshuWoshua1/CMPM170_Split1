@@ -892,6 +892,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943953835}
   m_CullTransparentMesh: 1
+--- !u!1 &963493933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 963493935}
+  - component: {fileID: 963493934}
+  m_Layer: 0
+  m_Name: SpriteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &963493934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963493933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471eeaf5655e0dc4d9265c86b0909d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
+  toolSprites:
+  - {fileID: 2800000, guid: a1b9fdedc63077d4d91570ba30b84e90, type: 3}
+  - {fileID: 2800000, guid: 923b5801cd6af894fbe160613c3390e5, type: 3}
+  - {fileID: 2800000, guid: 9f48dddbd25edfd4dba2fa0e99ab7a34, type: 3}
+  - {fileID: 2800000, guid: 42bc45fc7cd33de4198fb4f312142c9c, type: 3}
+  - {fileID: 2800000, guid: c41ab2e9ee76f8b45b945b23cab380cf, type: 3}
+  - {fileID: 2800000, guid: dd9b3a3f6b63d69438005643bfbaa208, type: 3}
+  - {fileID: 2800000, guid: 45ab98c62dfaf6a41858c36f191df369, type: 3}
+  - {fileID: 2800000, guid: 557b6ba822c6c3842b11e72bba911f95, type: 3}
+  - {fileID: 2800000, guid: e816be59806af234a8eefcf1c96d1fe2, type: 3}
+--- !u!4 &963493935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963493933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 991.9108, y: 644.83514, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1167500190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +982,10 @@ PrefabInstance:
       propertyPath: GenerateBTN
       value: 
       objectReference: {fileID: 1692689644}
+    - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
+      propertyPath: spriteManager
+      value: 
+      objectReference: {fileID: 963493934}
     - target: {fileID: 1184502900751259644, guid: fb31131ac122b1541badb36f19170811, type: 3}
       propertyPath: toolGenerator
       value: 
@@ -1683,3 +1741,4 @@ SceneRoots:
   - {fileID: 1167500190}
   - {fileID: 1949035780}
   - {fileID: 922681432}
+  - {fileID: 963493935}
