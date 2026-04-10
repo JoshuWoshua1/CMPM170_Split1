@@ -7,11 +7,13 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     private float speedX, speedY;
     private Rigidbody2D rb;
+    private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,5 +31,9 @@ public class PlayerMovement : MonoBehaviour
         speedX = horizontalInput * speed;
         speedY = verticalInput * speed;
         rb.linearVelocity = new Vector2(speedX, speedY);
+
+        // Update animator parameters
+        animator.SetFloat("Horizontal", speedX);
+        animator.SetFloat("Vertical", speedY);
     }
 }
