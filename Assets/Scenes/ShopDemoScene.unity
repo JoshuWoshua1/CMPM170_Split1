@@ -2090,7 +2090,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1318713940}
-  - {fileID: 1884503985}
   m_Father: {fileID: 995345242}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -2192,7 +2191,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 145862288044527381, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1352528804}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
 --- !u!224 &403466501 stripped
@@ -3351,7 +3353,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 145862288044527381, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1884503985}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
 --- !u!224 &636665811 stripped
@@ -5698,7 +5703,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 774684731}
-  - {fileID: 1352528804}
   m_Father: {fileID: 521277589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6296,7 +6300,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1853731147}
   m_HandleRect: {fileID: 1853731146}
   m_Direction: 2
-  m_Value: 0.99999917
+  m_Value: 0.9999994
   m_Size: 0.6555449
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6524,7 +6528,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 794748781}
   m_HandleRect: {fileID: 794748780}
   m_Direction: 2
-  m_Value: 0.99999917
+  m_Value: 0.9999994
   m_Size: 0.6555449
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8808,7 +8812,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 371468629}
+    m_TransformParent: {fileID: 636665811}
     m_Modifications:
     - target: {fileID: 2632525403169626253, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_Name
@@ -8876,11 +8880,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -16.887962
+      value: 0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 183.25775
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9323,7 +9327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopManager
   playerGold: 100
-  goldText: {fileID: 0}
+  goldText: {fileID: 537581051}
   playerInventoryPanel: {fileID: 1318713940}
   shopInventoryPanel: {fileID: 760793890}
 --- !u!1 &1962459540
@@ -9775,7 +9779,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1104738335}
+    m_TransformParent: {fileID: 403466501}
     m_Modifications:
     - target: {fileID: 763102038184645431, guid: 8215010fe679b40bfb61012120aa0976, type: 3}
       propertyPath: m_Name
@@ -9843,11 +9847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5017812265308258923, guid: 8215010fe679b40bfb61012120aa0976, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -316.24295
+      value: 0.43695068
       objectReference: {fileID: 0}
     - target: {fileID: 5017812265308258923, guid: 8215010fe679b40bfb61012120aa0976, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -116
+      value: 1.200798
       objectReference: {fileID: 0}
     - target: {fileID: 5017812265308258923, guid: 8215010fe679b40bfb61012120aa0976, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

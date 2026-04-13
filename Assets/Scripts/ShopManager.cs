@@ -46,8 +46,19 @@ public class ShopManager : MonoBehaviour
         playerGold += itemData.GetSellPrice();
         UpdateGoldDisplay();
 
-        slot.currentItem = null;
-        Destroy(item.gameObject);
+        // move to empty shop slot instead of destroying
+        ShopSlot emptySlot = FindEmptySlot(shopInventoryPanel);
+        if (emptySlot != null) {
+            slot.currentItem = null;
+            item.transform.SetParent(emptySlot.transform);
+            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            emptySlot.currentItem = item.gameObject;
+            item.isShopItem = true;
+        } else {
+            // no empty shop slot, just destroy
+            slot.currentItem = null;
+            Destroy(item.gameObject);
+        }
     }
 
     private ShopSlot FindEmptySlot(Transform panel) {
