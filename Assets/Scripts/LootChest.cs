@@ -10,6 +10,7 @@ public class LootChest : MonoBehaviour
 {
    
     public Button GenerateBTN;
+    public Button EquipBTN;
     [SerializeField]
     public TextMeshProUGUI Chest_Output_TMP;
      [SerializeField]
@@ -21,17 +22,25 @@ public class LootChest : MonoBehaviour
     public GameObject Chest_OutputUI;
     public  ToolGenerator toolGenerator;
     public SpriteManager spriteManager;
+    public TempPlayer player;
 
     private bool alreadyGenerated;
     private int lootCount;
     private LootChest myChest;
+    private Tool currentGeneratedTool; // current tool for equiping
     
 
     void Start()
     {
         Button btn = GenerateBTN.GetComponent<Button>();
-        myChest = new LootChest();
+		myChest = new LootChest();
 		btn.onClick.AddListener(Open);
+
+        if (EquipBTN != null)
+        {
+            EquipBTN.onClick.AddListener(OnEquipButtonPressed);
+        }
+
         Chest_OutputUI.SetActive(false);
     }
  
@@ -44,18 +53,22 @@ public class LootChest : MonoBehaviour
         {
             Debug.Log("New chest created");
             myChest = LootChestGeneration(myChest);
+            drops = new List<Tool>(myChest.drops);
            
             alreadyGenerated = true;
            
             displayOutput(myChest);
-            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
+            CacheGeneratedTool(myChest);
+            //SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
         }
         else
         {
             Debug.Log("Chest already Exists generating new one");
             myChest = LootChestGeneration(myChest);
+            drops = new List<Tool>(myChest.drops);
             displayOutput(myChest);
-            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
+            CacheGeneratedTool(myChest);
+            //SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
         }
         
 	}
@@ -82,9 +95,8 @@ public class LootChest : MonoBehaviour
             chest.lootRarities = toolGenerator.GetLootRarities();
             Debug.Log("Chest Generated with " + chest.lootRarities.Count + " Rarities and " + chest.lootTable.Count + " total items.");
         }
-       
-            chest.drops = chest.GenerateLoot(chest.lootRarities, chest.lootCount);
 
+        chest.drops = chest.GenerateLoot(chest.lootRarities, chest.lootCount);
         return chest;
     }
    
@@ -96,7 +108,9 @@ public class LootChest : MonoBehaviour
         foreach(var drop in currentChest.drops)
         {
             output = drop.Name + "\n" ;
-        }  
+        }
+
+        Chest_Output_TMP.text = output;
         Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
         Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
@@ -177,6 +191,80 @@ public class LootChest : MonoBehaviour
         Chest_OutputUI.SetActive(false);
     }
 
+    // Equips the generated loot from the chest to the player when the equip button is pressed.
+    // Right now requires both the player and tool generator to be in the same scene.
+    // May need to change how this works if we want the lootbox to be in its own scene (we probably will)
+    public void OnEquipButtonPressed()
+    {
+        if (player == null)
+        {
+            Debug.LogWarning("LootChest: Player reference is missing.");
+            return;
+        }
+
+        if (toolGenerator == null)
+        {
+            Debug.LogWarning("LootChest: ToolGenerator reference is missing.");
+            return;
+        }
+
+        if (spriteManager == null)
+        {
+            Debug.LogWarning("LootChest: SpriteManager reference is missing.");
+            return;
+        }
+
+        Tool generatedTool = getGeneratedTool();
+        if (generatedTool == null)
+        {
+            Debug.LogWarning("LootChest: No generated tool to equip.");
+            return;
+        }
+        Debug.Log("CHECKCHECK");
+
+        Sprite generatedToolSprite = GetGeneratedToolSprite(generatedTool);
+
+        bool equipped = player.EquipToolData(generatedTool, toolGenerator, generatedToolSprite);
+        Debug.Log(equipped
+            ? $"LootChest: Equipped '{generatedTool.Name}'."
+            : "LootChest: Equip failed.");
+    }
+
+    private Sprite GetGeneratedToolSprite(Tool generatedTool)
+    {
+        if (generatedTool == null)
+        {
+            return null;
+        }
+
+        if (spriteManager.toolSprites == null)
+        {
+            Debug.LogWarning("LootChest: SpriteManager.toolSprites is not assigned.");
+            return null;
+        }
+
+        if (generatedTool.ImageIndex < 0 || generatedTool.ImageIndex >= spriteManager.toolSprites.Length)
+        {
+            Debug.LogWarning($"LootChest: No sprite found for image index {generatedTool.ImageIndex}.");
+            return null;
+        }
+
+        return spriteManager.toolSprites[generatedTool.ImageIndex];
+    }
+
+    private void CacheGeneratedTool(LootChest chest)
+    {
+        if (chest != null && chest.drops != null && chest.drops.Count > 0)
+        {
+            currentGeneratedTool = chest.drops[0];
+        }
+        else
+        {
+            currentGeneratedTool = null;
+        }
+    }
+
+    /* not used anymore. was just for testing if toolBase would inherit values from the lootchest.
     private void SpawnLootDrops(List<Tool> dropsToSpawn)
     {
         if (toolGenerator == null || dropsToSpawn == null || dropsToSpawn.Count == 0)
@@ -190,11 +278,18 @@ public class LootChest : MonoBehaviour
             toolGenerator.SpawnToolFromData(drop, Vector3.zero, Quaternion.identity, null, null);
         }
     }
+    */
+
     public Tool getGeneratedTool()
     {
         if(drops != null && drops.Count > 0)
         {
             return drops[0];
+        }
+
+        if(currentGeneratedTool != null)
+        {
+            return currentGeneratedTool;
         }
         else
         {

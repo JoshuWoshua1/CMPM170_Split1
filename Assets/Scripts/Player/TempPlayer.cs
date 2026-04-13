@@ -55,4 +55,58 @@ public class TempPlayer : MonoBehaviour
         }
     }
 
+    public bool EquipToolData(Tool toolData, ToolGenerator toolGenerator, Sprite icon = null)
+    {
+        if (toolData == null)
+        {
+            Debug.LogWarning("EquipToolData called with null Tool data.");
+            return false;
+        }
+
+        if (toolGenerator == null)
+        {
+            Debug.LogWarning("EquipToolData called without a ToolGenerator reference.");
+            return false;
+        }
+
+        if (toolPivot == null)
+        {
+            Debug.LogWarning("EquipToolData called but toolPivot is not assigned.");
+            return false;
+        }
+
+        ToolBase spawnedTool = toolGenerator.SpawnToolFromData(
+            toolData,
+            toolPivot.position,
+            toolPivot.rotation,
+            toolPivot,
+            icon
+        );
+
+        if (spawnedTool == null)
+        {
+            return false;
+        }
+
+        EquipToolInstance(spawnedTool);
+        return true;
+    }
+
+    public void EquipToolInstance(ToolBase newTool)
+    {
+        if (newTool == null)
+        {
+            Debug.LogWarning("EquipToolInstance called with null tool instance.");
+            return;
+        }
+
+        if (equippedTool != null)
+        {
+            equippedTool.OnUnequip();
+        }
+
+        equippedTool = newTool;
+        equippedTool.OnEquip();
+    }
+
 }
