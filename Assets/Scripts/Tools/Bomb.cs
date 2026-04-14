@@ -42,11 +42,10 @@ public class Bomb : ToolBase
     }
 
     /*
-    public override IEnumerator ToolAnimate()
+    public override void ToolAnimate(Vector2 position)
     {
         // Placeholder for bomb-specific animation logic
-        Debug.Log("Animating " + toolName + " with an explosion effect");
-        yield return null;
+        Debug.Log("Animating " + toolName + " with an explosion effect at position " + position);
     }
     */
 

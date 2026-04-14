@@ -33,24 +33,11 @@ public class Pickaxe : ToolBase
         return affectedTiles;
     }
 
-    public override IEnumerator ToolAnimate()
+    /*
+    public override void ToolAnimate(Vector2 position)
     {
-        Quaternion startRotation = Quaternion.Euler(0f, 0f, 115f);
-        Quaternion endRotation = Quaternion.Euler(0f, 0f, 155f);
-        float elapsed = 0f;
-        float animationDuration = 0.1f; // Duration of the swing animation
         // Placeholder for pickaxe-specific animation logic
-        Debug.Log("Animating " + toolName + " with a swinging motion");
-        
-        while (elapsed < animationDuration)
-        {
-            float t = elapsed / animationDuration;
-            toolSprite.transform.localRotation = Quaternion.Slerp(startRotation, endRotation, t);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        toolSprite.transform.localPosition = new Vector2(0f,-4f); // reset position to prevent animation issues with different tools
-        toolSprite.transform.localRotation = Quaternion.Euler(0f, 0f, 135f); // reset rotation to prevent animation issues with different tools
-        toolSprite.transform.localScale = new Vector2(7f, 7f); // reset scale to prevent animation issues with different tools    
+        Debug.Log("Animating " + toolName + " with a swinging motion at position " + position);
     }
+    */
 }

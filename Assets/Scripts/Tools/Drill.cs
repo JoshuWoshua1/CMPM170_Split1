@@ -24,11 +24,10 @@ public class Drill : ToolBase
     }
 
     /*
-    public override IEnumerator ToolAnimate()
+    public override void ToolAnimate(Vector2 position)
     {
         // Placeholder for drill-specific animation logic
-        Debug.Log("Animating " + toolName + " with a drilling motion");
-        yield return null;
+        Debug.Log("Animating " + toolName + " with a drilling motion at position " + position);
     }
     */
 }
