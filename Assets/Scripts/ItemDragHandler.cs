@@ -35,7 +35,8 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (transform.parent.GetComponent<ShopSlot>() == null)
         {
             transform.SetParent(originalParent);
-            GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+            // GetComponent<RectTransform>().anchoredPosition =  new Vector3(50f,-50f, 1f);
         }
+          GetComponent<RectTransform>().anchoredPosition =  new Vector3(50f,-50f, 1f);
     }
 }

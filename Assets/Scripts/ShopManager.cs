@@ -34,9 +34,9 @@ public class ShopManager : MonoBehaviour
             ShopItemHandler boughtItem = Instantiate(item);
             // item.transform.SetParent(emptySlot.transform);
             boughtItem.transform.SetParent(emptySlot.transform);
-            boughtItem.GetComponent<RectTransform>().anchoredPosition = new Vector2(50f,-50f);
+            boughtItem.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f,-50f, 1f);
             emptySlot.currentItem = boughtItem.gameObject;
-            // boughtItem.isShopItem = false;
+            boughtItem.isShopItem = false;
         }
     }
 
