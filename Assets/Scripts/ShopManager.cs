@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour
             boughtItem.GetComponent<RectTransform>().anchoredPosition = new Vector3(50f,-50f, 1f);
             emptySlot.currentItem = boughtItem.gameObject;
             boughtItem.isShopItem = false;
-            // boughtItem.GetComponentInChildren<Button>(true).gameObject.SetActive(true);
+            boughtItem.transform.Find("Chest").transform.Find("Generate Button").gameObject.SetActive(true);
         }
     }
 
