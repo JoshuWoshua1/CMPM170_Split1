@@ -24,10 +24,11 @@ public class Hands : ToolBase
     }
 
     /*
-    public override void ToolAnimate(Vector2 position)
+    public override IEnumerator ToolAnimate()
     {
         // Placeholder for hands-specific animation logic
-        Debug.Log("Animating " + toolName + " with a punching motion at position " + position);
+        Debug.Log("Animating " + toolName + " with a punching motion.");
+        yield return null;
     }
     */
 
