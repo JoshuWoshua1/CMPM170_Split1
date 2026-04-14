@@ -7,6 +7,7 @@ using TMPro;
 
 using System;
 using Unity.VisualScripting;
+using System.IO.Compression;
 public class LootChest : MonoBehaviour
 {
    
@@ -28,17 +29,42 @@ public class LootChest : MonoBehaviour
 
     void Start()
     {
-        Chest_Output_UI = GameObject.Find("Chest_Output_UI");
-        lootHighlight = GameObject.Find("Rarity Highlight");
+        Chest_Output_UI = GameObject.Find("UI").transform.Find("Chest_Output_UI").gameObject;
+        var currentObject = Chest_Output_UI.GetComponentsInChildren<RectTransform>(true);
+
+        foreach(var obj in currentObject)
+        {
+            if(obj.name == "Rarity Highlight")
+            {
+                Debug.Log("Found Loot Highlight");
+                lootHighlight = obj.gameObject;
+            }
+            if(obj.name == "Tool Description TMP")
+            {
+                Debug.Log("Found chest item description ");
+                Chest_Item_Description_TMP = obj.GetComponent<TextMeshProUGUI>();
+            }
+            if(obj.name == "Tool PFP")
+            {
+                Debug.Log("Found chest Item Pfp ");
+                Chest_Item_PFP = obj.GetComponent<RawImage>();
+            }
+            if(obj.name == "Output text TMP")
+            {
+                Debug.Log("Found chest output tmp");
+                Chest_Output_TMP = obj.GetComponent<TextMeshProUGUI>();
+            }
+        }
+       
         spriteManager = GameObject.Find("SpriteManager").GetComponent<SpriteManager>();
         // Chest_Item_Description_TMP = Chest_Output_UI.transform.Find("Tool Description TMP").GetComponent<TextMeshProUGUI>();
         // Chest_Item_PFP =Chest_Output_UI.transform.Find("Tool PFP").GetComponent<RawImage>();
-        // Chest_Output_TMP = GameObject.Find("Chest Output TMP").GetComponent<TextMeshProUGUI>();
+        // Chest_Output_TMP = Chest_Output_UI.transform.Find("Chest Output TMP").GetComponent<TextMeshProUGUI>();
 
         Button btn = GenerateBTN.GetComponent<Button>();
         myChest = new LootChest();
 		btn.onClick.AddListener(Open);
-        //Chest_Output_UI.SetActive(false);
+        Chest_Output_UI.SetActive(false);
     }
  
     // call this function to open chest 
@@ -98,29 +124,29 @@ public class LootChest : MonoBehaviour
     public void displayOutput(LootChest currentChest)
     {
         Chest_Output_UI.SetActive(true); 
-        // if(currentChest.drops[0].Rarity == "Common")
-        // {
-        //     lootHighlight.GetComponent<Image>().color = Color.gray3;
-        // }
-        // else if(currentChest.drops[0].Rarity == "Uncommon")
-        // {
-        //     lootHighlight.GetComponent<Image>().color = Color.forestGreen;
-        // }
-        // else if(currentChest.drops[0].Rarity == "Rare")
-        // {
-        //     lootHighlight.GetComponent<Image>().color = Color.darkBlue;
-        // }
-        // else if(currentChest.drops[0].Rarity == "Epic")
-        // {
-        //     lootHighlight.GetComponent<Image>().color = Color.mediumPurple;
-        // }
-        // else if(currentChest.drops[0].Rarity == "Legendary")
-        // {
-        //     lootHighlight.GetComponent<Image>().color = Color.gold;
-        // }
-        // Chest_Output_TMP.text = currentChest.drops[0].Name;
-        // Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
-        // Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
+        if(currentChest.drops[0].Rarity == "Common")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.gray3;
+        }
+        else if(currentChest.drops[0].Rarity == "Uncommon")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.forestGreen;
+        }
+        else if(currentChest.drops[0].Rarity == "Rare")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.darkBlue;
+        }
+        else if(currentChest.drops[0].Rarity == "Epic")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.mediumPurple;
+        }
+        else if(currentChest.drops[0].Rarity == "Legendary")
+        {
+            lootHighlight.GetComponent<Image>().color = Color.gold;
+        }
+        Chest_Output_TMP.text = currentChest.drops[0].Name;
+        Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
+        Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
    

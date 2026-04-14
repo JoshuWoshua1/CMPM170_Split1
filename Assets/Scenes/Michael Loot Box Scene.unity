@@ -2160,7 +2160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2803310112893726962, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 63.999985
+      value: -70.00003
       objectReference: {fileID: 0}
     - target: {fileID: 3992861575411432138, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_Enabled
@@ -2168,7 +2168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4486547919957950763, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 64
+      value: -70.000015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3385,7 +3385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 825488731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1703634750}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &825488731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5859,11 +5871,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2803310112893726962, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 66
+      value: -68.000015
       objectReference: {fileID: 0}
     - target: {fileID: 4486547919957950763, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 66
+      value: -68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7187,7 +7199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1703634751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7247,7 +7259,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1703634754
 Canvas:
   m_ObjectHideFlags: 0
@@ -7828,11 +7840,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2803310112893726962, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 69
+      value: -65.000015
       objectReference: {fileID: 0}
     - target: {fileID: 4486547919957950763, guid: a942f0afb53bf47c180645c99dd99edb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 68.999985
+      value: -65.00003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7998,7 +8010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1949035777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8975,6 +8987,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5915693911589904372, guid: 21d309d484f17744f8d3ed25cb6f0284, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295829693187993403, guid: 21d309d484f17744f8d3ed25cb6f0284, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7684545052029605175, guid: 21d309d484f17744f8d3ed25cb6f0284, type: 3}
       propertyPath: m_Name
       value: Rare Loot Chest
@@ -9193,6 +9213,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -75
       objectReference: {fileID: 0}
+    - target: {fileID: 7954015997309060928, guid: 947f5303c605e764b83be2f9ac98f258, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8393626703989527644, guid: 947f5303c605e764b83be2f9ac98f258, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9293,6 +9317,10 @@ PrefabInstance:
     - target: {fileID: 4879645031844567453, guid: 9712fbb252c6c8a42a73dfa4f0ae73fb, type: 3}
       propertyPath: m_Name
       value: 'Common Loot Chest '
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061723531865451954, guid: 9712fbb252c6c8a42a73dfa4f0ae73fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
