@@ -17,8 +17,6 @@ public class LootChest : MonoBehaviour
     public RawImage Chest_Item_PFP;
     
     public GameObject lootHighlight;
-
-    public GameObject Chest_OutputUI;
     public  ToolGenerator toolGenerator;
     public SpriteManager spriteManager;
 
@@ -26,13 +24,21 @@ public class LootChest : MonoBehaviour
     private int lootCount;
     private LootChest myChest;
     
+    public GameObject Chest_Output_UI;
 
     void Start()
     {
+        Chest_Output_UI = GameObject.Find("Chest_Output_UI");
+        lootHighlight = GameObject.Find("Rarity Highlight");
+        spriteManager = GameObject.Find("SpriteManager").GetComponent<SpriteManager>();
+        // Chest_Item_Description_TMP = Chest_Output_UI.transform.Find("Tool Description TMP").GetComponent<TextMeshProUGUI>();
+        // Chest_Item_PFP =Chest_Output_UI.transform.Find("Tool PFP").GetComponent<RawImage>();
+        // Chest_Output_TMP = GameObject.Find("Chest Output TMP").GetComponent<TextMeshProUGUI>();
+
         Button btn = GenerateBTN.GetComponent<Button>();
         myChest = new LootChest();
 		btn.onClick.AddListener(Open);
-        Chest_OutputUI.SetActive(false);
+        //Chest_Output_UI.SetActive(false);
     }
  
     // call this function to open chest 
@@ -46,7 +52,7 @@ public class LootChest : MonoBehaviour
             myChest = LootChestGeneration(myChest);
            
             alreadyGenerated = true;
-           
+            Debug.Log("DisplayingOUtput");
             displayOutput(myChest);
             SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
         }
@@ -91,35 +97,30 @@ public class LootChest : MonoBehaviour
         // Takes in a LootChest and displays it's generated loot to the Unity UI 
     public void displayOutput(LootChest currentChest)
     {
-         string output = "";
-        Chest_OutputUI.SetActive(true);
-        foreach(var drop in currentChest.drops)
-        {
-            output = drop.Name + "\n" ;
-        }  
-        if(currentChest.drops[0].Rarity == "Common")
-        {
-            lootHighlight.GetComponent<Image>().color = Color.gray3;
-        }
-        else if(currentChest.drops[0].Rarity == "Uncommon")
-        {
-            lootHighlight.GetComponent<Image>().color = Color.forestGreen;
-        }
-        else if(currentChest.drops[0].Rarity == "Rare")
-        {
-            lootHighlight.GetComponent<Image>().color = Color.darkBlue;
-        }
-        else if(currentChest.drops[0].Rarity == "Epic")
-        {
-            lootHighlight.GetComponent<Image>().color = Color.mediumPurple;
-        }
-        else if(currentChest.drops[0].Rarity == "Legendary")
-        {
-            lootHighlight.GetComponent<Image>().color = Color.gold;
-        }
-        Chest_Output_TMP.text = currentChest.drops[0].Name;
-        Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
-        Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
+        Chest_Output_UI.SetActive(true); 
+        // if(currentChest.drops[0].Rarity == "Common")
+        // {
+        //     lootHighlight.GetComponent<Image>().color = Color.gray3;
+        // }
+        // else if(currentChest.drops[0].Rarity == "Uncommon")
+        // {
+        //     lootHighlight.GetComponent<Image>().color = Color.forestGreen;
+        // }
+        // else if(currentChest.drops[0].Rarity == "Rare")
+        // {
+        //     lootHighlight.GetComponent<Image>().color = Color.darkBlue;
+        // }
+        // else if(currentChest.drops[0].Rarity == "Epic")
+        // {
+        //     lootHighlight.GetComponent<Image>().color = Color.mediumPurple;
+        // }
+        // else if(currentChest.drops[0].Rarity == "Legendary")
+        // {
+        //     lootHighlight.GetComponent<Image>().color = Color.gold;
+        // }
+        // Chest_Output_TMP.text = currentChest.drops[0].Name;
+        // Chest_Item_PFP.texture = spriteManager.ToolRawImages[currentChest.drops[0].ImageIndex];
+        // Chest_Item_Description_TMP.text = "Description: " + currentChest.drops[0].Description; 
     }
     // This function allows for custom rarities that correspond to the loot table .csv file's rarities, as well as the corresponding weights of each rarity. 
    
@@ -195,7 +196,7 @@ public class LootChest : MonoBehaviour
     // closes the Chest's UI output Window
     public void closeOutputWindow()
     {
-        Chest_OutputUI.SetActive(false);
+        Chest_Output_UI.SetActive(false);
     }
 
     private void SpawnLootDrops(List<Tool> dropsToSpawn)
