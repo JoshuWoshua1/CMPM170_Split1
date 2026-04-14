@@ -103,6 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd44c83d08a04694a19ebafd66fb9d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  currentItem: {fileID: 0}
+  itemPrice: 0
+  priceText: {fileID: 0}
+  isShopSlot: 1
 --- !u!1 &1549053138307448306
 GameObject:
   m_ObjectHideFlags: 0

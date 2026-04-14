@@ -30,11 +30,13 @@ public class ShopManager : MonoBehaviour
         // move to first empty player slot
         ShopSlot emptySlot = FindEmptySlot(playerInventoryPanel);
         if (emptySlot != null) {
-            slot.currentItem = null;
-            item.transform.SetParent(emptySlot.transform);
-            item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-            emptySlot.currentItem = item.gameObject;
-            item.isShopItem = false;
+            // slot.currentItem = null;
+            ShopItemHandler boughtItem = Instantiate(item);
+            // item.transform.SetParent(emptySlot.transform);
+            boughtItem.transform.SetParent(emptySlot.transform);
+            boughtItem.GetComponent<RectTransform>().anchoredPosition = new Vector2(50f,-50f);
+            emptySlot.currentItem = boughtItem.gameObject;
+            // boughtItem.isShopItem = false;
         }
     }
 
