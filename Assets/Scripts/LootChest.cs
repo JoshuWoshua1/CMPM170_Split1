@@ -69,28 +69,16 @@ public class LootChest : MonoBehaviour
  
     // call this function to open chest 
     public void Open(){
-        GetComponent<ShopItemHandler>().Use(); // ensures that once chest is opened, it can no longer be sold back to the shop.
+
         // generates a new chest with loot if 1: chest has not been opened 2: chest allows for regeneration of loot upon open
         // else display existing chest's already generated loot 
-        if(!alreadyGenerated)
-        {
-            Debug.Log("New chest created");
-            myChest = LootChestGeneration(myChest);
-           
-            alreadyGenerated = true;
-            Debug.Log("DisplayingOUtput");
-            displayOutput(myChest);
-            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
-        }
-        else
-        {
-            Debug.Log("Chest already Exists generating new one");
-            myChest = LootChestGeneration(myChest);
-            displayOutput(myChest);
-            SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
-        }
-        
-	}
+    
+        Debug.Log("Chest already Exists generating new one");
+        myChest = LootChestGeneration(myChest);
+        displayOutput(myChest);
+        SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
+        GetComponent<ShopItemHandler>().Use(); 
+}
     // c# object that stores data about object created in csv file
     
     public List<Tool> drops = new List<Tool>();
