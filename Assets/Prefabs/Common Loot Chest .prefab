@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 80.7}
+  m_AnchoredPosition: {x: 0, y: 60.5}
   m_SizeDelta: {x: 0, y: -61.7025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8333439598693568846
@@ -711,8 +711,6 @@ GameObject:
   - component: {fileID: 8779252845326380737}
   - component: {fileID: 3970413789345848290}
   - component: {fileID: 7891622677789602900}
-  - component: {fileID: 1499466558127889495}
-  - component: {fileID: 4034299521951702528}
   m_Layer: 5
   m_Name: Chest
   m_TagString: Untagged
@@ -737,7 +735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72}
+  m_AnchoredPosition: {x: 0, y: -86.5}
   m_SizeDelta: {x: 0, y: -45.191208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3970413789345848290
@@ -778,53 +776,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1499466558127889495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9061723531865451954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039600c25d1ec294889edc660a4116f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToolGenerator
-  LootTableFilePath: Assets/Imported Assets/Loot Chest/Assets/Loot Table .csv Files/LootDrops.csv
-  lootTableTextAsset: {fileID: 0}
-  lootTableResourcePath: 
-  Rarities:
-  - Common
-  - Uncommon
-  - Rare
-  - Epic
-  - Legendary
-  Rarity_Weights: 370000001e0000000f0000000600000001000000
-  toolPrefabs:
-  - {fileID: 313252930551372848, guid: caa9b00fc23cef349ad57a65de8f5b09, type: 3}
-  - {fileID: 7647417081484496581, guid: 305978d220c4b86498571856bf702db0, type: 3}
-  - {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
---- !u!114 &4034299521951702528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9061723531865451954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449da257019eb644f82e0508b23da3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GenerateBTN: {fileID: 705171660710862158}
-  Chest_Output_TMP: {fileID: 0}
-  Chest_Item_Description_TMP: {fileID: 0}
-  Chest_Item_PFP: {fileID: 0}
-  lootHighlight: {fileID: 0}
-  toolGenerator: {fileID: 1499466558127889495}
-  spriteManager: {fileID: 0}
-  Chest_Output_UI: {fileID: 0}
-  drops: []
 --- !u!1001 &7439771373893206288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -952,6 +903,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2632525403169626253, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5368973431478151200}
+    - targetCorrespondingSourceObject: {fileID: 2632525403169626253, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7061678059930241963}
+    - targetCorrespondingSourceObject: {fileID: 2632525403169626253, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6983645263305811382}
   m_SourcePrefab: {fileID: 100100000, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
 --- !u!224 &901344054536243393 stripped
 RectTransform:
@@ -1021,3 +978,50 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7061678059930241963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4879645031844567453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039600c25d1ec294889edc660a4116f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToolGenerator
+  LootTableFilePath: Assets/Imported Assets/Loot Chest/Assets/Loot Table .csv Files/LootDrops.csv
+  lootTableTextAsset: {fileID: 0}
+  lootTableResourcePath: 
+  Rarities:
+  - Common
+  - Uncommon
+  - Rare
+  - Epic
+  - Legendary
+  Rarity_Weights: 370000001e0000000f0000000600000001000000
+  toolPrefabs:
+  - {fileID: 313252930551372848, guid: caa9b00fc23cef349ad57a65de8f5b09, type: 3}
+  - {fileID: 7647417081484496581, guid: 305978d220c4b86498571856bf702db0, type: 3}
+  - {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
+--- !u!114 &6983645263305811382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4879645031844567453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449da257019eb644f82e0508b23da3f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenerateBTN: {fileID: 705171660710862158}
+  Chest_Output_TMP: {fileID: 0}
+  Chest_Item_Description_TMP: {fileID: 0}
+  Chest_Item_PFP: {fileID: 0}
+  lootHighlight: {fileID: 0}
+  toolGenerator: {fileID: 7061678059930241963}
+  spriteManager: {fileID: 0}
+  Chest_Output_UI: {fileID: 0}
+  drops: []

@@ -15,4 +15,8 @@ public class ShopItemHandler : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+    public void UseLootChest()
+    {
+        ShopManager.Instance.SellItem(this);
+    }
 }

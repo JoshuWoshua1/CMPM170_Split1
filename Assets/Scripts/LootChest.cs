@@ -69,7 +69,7 @@ public class LootChest : MonoBehaviour
  
     // call this function to open chest 
     public void Open(){
-
+        GetComponent<ShopItemHandler>().UseLootChest(); // ensures that once chest is opened, it can no longer be sold back to the shop.
         // generates a new chest with loot if 1: chest has not been opened 2: chest allows for regeneration of loot upon open
         // else display existing chest's already generated loot 
         if(!alreadyGenerated)
