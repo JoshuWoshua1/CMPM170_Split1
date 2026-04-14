@@ -1015,11 +1015,11 @@ MonoBehaviour:
   lootTableTextAsset: {fileID: 0}
   lootTableResourcePath: 
   Rarities:
-  - Common
-  - Uncommon
   - Rare
-  - Epic
   - Legendary
+  - Epic
+  - Uncommon
+  - Common
   Rarity_Weights: 370000001e0000000f0000000600000001000000
   toolPrefabs:
   - {fileID: 313252930551372848, guid: caa9b00fc23cef349ad57a65de8f5b09, type: 3}

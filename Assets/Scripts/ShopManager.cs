@@ -62,6 +62,14 @@ public class ShopManager : MonoBehaviour
             slot.currentItem = null;
             Destroy(item.gameObject);
     }
+    public void UseLootChest(ShopItemHandler item)
+    {
+        ShopSlot slot = item.GetComponentInParent<ShopSlot>();
+        Item itemData = item.GetComponent<Item>();
+        if (slot == null || itemData == null) return;
+        slot.currentItem = null;
+        Destroy(item.gameObject);
+    }
 
     private ShopSlot FindEmptySlot(Transform panel) {
         foreach (Transform child in panel) {
