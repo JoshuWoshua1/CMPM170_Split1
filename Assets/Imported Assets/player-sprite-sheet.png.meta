@@ -1,19 +1,37 @@
 fileFormatVersion: 2
-guid: ffb66c13e7a43064fae501e5dc87127f
+guid: 2d1f3e606d263aa4c958a5ef8b5ee121
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -923994315097029292
-    second: pixilart-sprite (2)_0
+      213: 1433299339830008458
+    second: player-sprite-sheet 1_0
   - first:
-      213: -229995298867008772
-    second: pixilart-sprite (2)_1
+      213: 1466298589010690519
+    second: player-sprite-sheet 1_1
   - first:
-      213: -1783533796186425835
-    second: pixilart-sprite (2)_2
+      213: -7194683482790673637
+    second: player-sprite-sheet 1_2
   - first:
-      213: 1889098082387582969
-    second: pixilart-sprite (2)_3
+      213: 2081105483438182503
+    second: player-sprite-sheet 1_3
+  - first:
+      213: -4737770129000689382
+    second: player-sprite-sheet 1_4
+  - first:
+      213: 5958281946141995919
+    second: player-sprite-sheet 1_5
+  - first:
+      213: 7278060204774730404
+    second: player-sprite-sheet 1_6
+  - first:
+      213: 2251318595002763000
+    second: player-sprite-sheet 1_7
+  - first:
+      213: 1226935370664572269
+    second: player-sprite-sheet 1_8
+  - first:
+      213: 2961134989678653275
+    second: player-sprite-sheet 1_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +127,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixilart-sprite (2)_0
+      name: player-sprite-sheet 1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 17
         y: 0
-        width: 80
-        height: 80
+        width: 46
+        height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4554922e0105d23f0800000000000000
-      internalID: -923994315097029292
+      spriteID: a8a9e57d72a14e310800000000000000
+      internalID: 1433299339830008458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixilart-sprite (2)_1
+      name: player-sprite-sheet 1_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 97
         y: 0
-        width: 80
-        height: 80
+        width: 46
+        height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfaa5078e74eeccf0800000000000000
-      internalID: -229995298867008772
+      spriteID: 7d183a44cc6595410800000000000000
+      internalID: 1466298589010690519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixilart-sprite (2)_2
+      name: player-sprite-sheet 1_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 177
         y: 0
-        width: 80
-        height: 80
+        width: 46
+        height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5167761467d9f37e0800000000000000
-      internalID: -1783533796186425835
+      spriteID: b1344e0dd79572c90800000000000000
+      internalID: -7194683482790673637
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixilart-sprite (2)_3
+      name: player-sprite-sheet 1_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 263
         y: 0
-        width: 80
-        height: 80
+        width: 36
+        height: 70
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ff559272bc673a10800000000000000
-      internalID: 1889098082387582969
+      spriteID: 7605378396291ec10800000000000000
+      internalID: 2081105483438182503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_4
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 0
+        width: 41
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1115716b2f004eb0800000000000000
+      internalID: -4737770129000689382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_5
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 0
+        width: 46
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83ba679cd110b250800000000000000
+      internalID: 5958281946141995919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_6
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 0
+        width: 46
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa2187023dd00560800000000000000
+      internalID: 7278060204774730404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_7
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 0
+        width: 46
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f60f5b855a4e3f10800000000000000
+      internalID: 2251318595002763000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_8
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 0
+        width: 36
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65f2d21833f60110800000000000000
+      internalID: 1226935370664572269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player-sprite-sheet 1_9
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 0
+        width: 41
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5fa6c79590181920800000000000000
+      internalID: 2961134989678653275
       vertices: []
       indices: 
       edges: []
@@ -200,7 +350,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7fb1d5b48dc21c94a8933cad4b44c610
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -208,14 +358,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      pixilart-sprite (2)_0: -923994315097029292
-      pixilart-sprite (2)_1: -229995298867008772
-      pixilart-sprite (2)_2: -1783533796186425835
-      pixilart-sprite (2)_3: 1889098082387582969
+      player-sprite-sheet 1_0: 1433299339830008458
+      player-sprite-sheet 1_1: 1466298589010690519
+      player-sprite-sheet 1_2: -7194683482790673637
+      player-sprite-sheet 1_3: 2081105483438182503
+      player-sprite-sheet 1_4: -4737770129000689382
+      player-sprite-sheet 1_5: 5958281946141995919
+      player-sprite-sheet 1_6: 7278060204774730404
+      player-sprite-sheet 1_7: 2251318595002763000
+      player-sprite-sheet 1_8: 1226935370664572269
+      player-sprite-sheet 1_9: 2961134989678653275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
