@@ -10,6 +10,7 @@ public class TerrianGeneration : MonoBehaviour
     public GameObject rubyBlock;
     public GameObject emeraldBlock;
     public GameObject greystoneBlock;
+    public GameObject lavaBlock;
 
     public int worldwidth = 50;
     public int worldheight = 100;
@@ -56,20 +57,16 @@ public class TerrianGeneration : MonoBehaviour
     public int emeraldMaxDepthbuffer = 10;
 
     public float emeraldTransitionNoiseFrequency = 0.25f;
-    public float emeraldTransitionVariation = 15f;
-
-    public Sprite stone;
-    public Sprite greystone;
-    public Sprite grass;
-    public Sprite dirt;
-    public Sprite gold;
-    public Sprite diamond;
-    public Sprite ruby;
-    public Sprite emerald;
-
-
-
+    public float emeraldTransitionVariation = 15f; 
     
+    public float lavaNoiseFrequency = 0.5f;
+    public int lavaMinDepth = 70;
+    public int lavaMaxDepth = 100;
+    public int lavaMaxDepthbuffer = 10;
+
+    public float lavaTransitionNoiseFrequency = 0.25f;
+    public float lavaTransitionVariation = 15f;
+
     private void Start()
     {   
         seed = Random.Range(-10000, 10000);
@@ -85,7 +82,7 @@ public class TerrianGeneration : MonoBehaviour
             float diamondtransitionLine = (diamondMaxDepth - diamondMaxDepthbuffer) + Mathf.PerlinNoise((x + seed) * diamondTransitionNoiseFrequency, seed) * diamondTransitionVariation;
             float rubytransitionLine = (rubyMaxDepth - rubyMaxDepthbuffer) + Mathf.PerlinNoise((x + seed) * rubyTransitionNoiseFrequency, seed) * rubyTransitionVariation;
             float emeraldtransitionLine = (emeraldMaxDepth - emeraldMaxDepthbuffer) + Mathf.PerlinNoise((x + seed) * emeraldTransitionNoiseFrequency, seed) * emeraldTransitionVariation;
-
+            float lavatransitionLine = (lavaMaxDepth - lavaMaxDepthbuffer) + Mathf.PerlinNoise((x + seed) * lavaTransitionNoiseFrequency, seed) * lavaTransitionVariation;
             for(int y = 0; y < worldheight; y++)
             {
                 float transitionNoise = Mathf.PerlinNoise(x * 0.1f, y * 0.1f);
@@ -143,18 +140,28 @@ public class TerrianGeneration : MonoBehaviour
                     else
                         blocktoplace = greystoneBlock;
                 }
+                else if (y < lavatransitionLine)
+                {
+                    float lavaNoise = Mathf.PerlinNoise((x + seed) * lavaNoiseFrequency, (y + seed) * lavaNoiseFrequency);
+                    bool isLavaPatch = (y > lavaMinDepth && y < lavaMaxDepth) && lavaNoise > .7f;
+                    if (isLavaPatch)
+                    {
+                        blocktoplace = lavaBlock;
+                    }
+                    else
+                    {
+                        blocktoplace = greystoneBlock;
+                    }
+                }
                 else
                 {
                     blocktoplace = greystoneBlock;
                 }
 
-                GameObject newTile = new GameObject(name = "tile");
-                newTile.AddComponent<SpriteRenderer>();
-                newTile.GetComponent<SpriteRenderer>().sprite = blocktoplace.GetComponent<SpriteRenderer>().sprite;
+                GameObject newTile = Instantiate(blocktoplace);
                 newTile.transform.position = new Vector2(x + 0.5f, -(y + 0.5f));
             }
         }
     }
-
     
 }
