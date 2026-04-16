@@ -22,7 +22,7 @@ public class LootChest : MonoBehaviour
     public GameObject lootHighlight;
     public  ToolGenerator toolGenerator;
     public SpriteManager spriteManager;
-    public TempPlayer player;
+    private TempPlayer player;
 
     private bool alreadyGenerated;
     private int lootCount;
@@ -74,7 +74,7 @@ public class LootChest : MonoBehaviour
             EquipBTN.onClick.AddListener(OnEquipButtonPressed);
         }
 
-        Chest_OutputUI.SetActive(false);
+        Chest_Output_UI.SetActive(false);
     }
  
     // call this function to open chest 
@@ -244,6 +244,9 @@ public class LootChest : MonoBehaviour
     // May need to change how this works if we want the lootbox to be in its own scene (we probably will)
     public void OnEquipButtonPressed()
     {
+        if (player == null)
+            player = FindFirstObjectByType<TempPlayer>();
+
         if (player == null)
         {
             Debug.LogWarning("LootChest: Player reference is missing.");
