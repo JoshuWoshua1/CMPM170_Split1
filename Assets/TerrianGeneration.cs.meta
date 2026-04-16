@@ -12,14 +12,7 @@ MonoImporter:
   - rubyBlock: {fileID: 5255284878781869691, guid: aca9b0e2dd7275d4b9b0cf54a79c61b9, type: 3}
   - emeraldBlock: {fileID: 8770075000882314427, guid: 716b53fa0e92fe84884ab4a0c6ca03c1, type: 3}
   - greystoneBlock: {fileID: 1707040914891825088, guid: 8d0ff4ef45eb1224b825bc08ab89d21b, type: 3}
-  - stone: {instanceID: 0}
-  - greystone: {instanceID: 0}
-  - grass: {instanceID: 0}
-  - dirt: {instanceID: 0}
-  - gold: {instanceID: 0}
-  - diamond: {instanceID: 0}
-  - ruby: {instanceID: 0}
-  - emerald: {instanceID: 0}
+  - lavaBlock: {fileID: 5875104606234305959, guid: 77e0db34d3af2cc4a92e12f0cded1ceb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
