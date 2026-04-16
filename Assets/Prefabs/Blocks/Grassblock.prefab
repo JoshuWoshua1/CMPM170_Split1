@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1707040914891825088
+--- !u!1 &2277112438272813289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4007826108773808138}
-  - component: {fileID: 2042642530256187803}
-  - component: {fileID: -4179199283612357699}
+  - component: {fileID: 4157443278674106339}
+  - component: {fileID: 6273530541754760289}
+  - component: {fileID: 5429513700589698854}
+  - component: {fileID: 7961078635465876874}
   m_Layer: 0
-  m_Name: Greystoneblock
+  m_Name: Grassblock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4007826108773808138
+--- !u!4 &4157443278674106339
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707040914891825088}
+  m_GameObject: {fileID: 2277112438272813289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.640001, y: -58.88, z: 0}
+  m_LocalPosition: {x: 22.376331, y: -61.731262, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2042642530256187803
+--- !u!212 &6273530541754760289
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707040914891825088}
+  m_GameObject: {fileID: 2277112438272813289}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2722764875039477695, guid: 4ba588f5e4c005c47976ef1dc4714dbb, type: 3}
+  m_Sprite: {fileID: -7958769179885505039, guid: 2ae87f176543eb54cb7d5a1b80a2bf62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,13 +93,13 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &-4179199283612357699
+--- !u!61 &5429513700589698854
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707040914891825088}
+  m_GameObject: {fileID: 2277112438272813289}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -138,3 +139,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7961078635465876874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277112438272813289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd693c426db95e4ea423b6452929de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destroyable
+  maxHealth: 2
+  healthBar: {fileID: 0}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyEffect: {fileID: 0}

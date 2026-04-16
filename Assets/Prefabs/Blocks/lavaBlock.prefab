@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8952329655257427066}
   - component: {fileID: 4632500648026591544}
   - component: {fileID: 1139116310834964992}
+  - component: {fileID: 8455730793865917763}
   m_Layer: 0
   m_Name: lavaBlock
   m_TagString: Untagged
@@ -138,3 +139,21 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &8455730793865917763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875104606234305959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd693c426db95e4ea423b6452929de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Destroyable
+  maxHealth: 2
+  healthBar: {fileID: 0}
+  OnDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyEffect: {fileID: 0}

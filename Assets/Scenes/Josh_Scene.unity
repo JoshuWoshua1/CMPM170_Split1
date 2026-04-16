@@ -6600,6 +6600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   menuCanvas: {fileID: 1260128826}
+  player: {fileID: 1361054848}
 --- !u!114 &1279143492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7099,6 +7100,7 @@ MonoBehaviour:
   equippedTool: {fileID: 1892952051}
   toolPivot: {fileID: 2142499821}
   moveSpeed: 5
+  moveForce: 35
   jumpForce: 5
 --- !u!114 &1361054849
 MonoBehaviour:
