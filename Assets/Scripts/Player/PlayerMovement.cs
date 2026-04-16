@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         speedX = horizontalInput * speed;
         speedY = verticalInput * speed;
-        rb.linearVelocity = new Vector2(speedX, speedY);
+        //rb.linearVelocity = new Vector2(speedX, speedY);
 
         // Update animator parameters
         animator.SetFloat("Horizontal", horizontalInput);
