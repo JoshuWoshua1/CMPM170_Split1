@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "CMPM170_Split1.slnx"
+    "dotnet.defaultSolution": "CMPM170_Sprint1.slnx"
 }

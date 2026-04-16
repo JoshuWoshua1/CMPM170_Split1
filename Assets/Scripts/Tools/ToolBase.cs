@@ -34,11 +34,32 @@ public class ToolBase : MonoBehaviour
     public string toolDescription = "No description";
     public int toolDamage = 1;
     public int toolDurability = 10;
+    public int maxToolDurability = 10;
     public int toolActionSpeed = 1;
     public int toolRarityLevel = 1;
     public int fortuneLevel = 1;
     public SpriteRenderer toolSprite;
     public float nextUseTime = 0f;
+
+    [Header("Default Equipped Transform")]
+    public Vector3 equippedLocalPosition = new Vector3(0f, -4f, 0f);
+    public Vector3 equippedLocalRotation = new Vector3(0f, 0f, 0f);
+    public Vector3 equippedLocalScale = new Vector3(7f, 7f, 7f);
+
+    protected virtual void Awake()
+    {
+        maxToolDurability = Mathf.Max(1, toolDurability);
+    }
+
+    private void EnsureToolSpriteReference()
+    {
+        if (toolSprite != null)
+        {
+            return;
+        }
+
+        toolSprite = GetComponent<SpriteRenderer>();
+    }
 
     /* ========================= TEMP LOOTBOX ADAPTER START =========================
         * this is a temporary method to initialize tools from the lootbox system, it will be replaced with a more robust system later on.
@@ -52,9 +73,12 @@ public class ToolBase : MonoBehaviour
             return;
         }
 
+        EnsureToolSpriteReference();
+
         toolName = data.Name;
         toolDescription = data.Description;
         toolDurability = Mathf.Max(0, data.Durability);
+        maxToolDurability = Mathf.Max(1, data.Durability);
         toolActionSpeed = Mathf.Max(1, data.MiningSpeed);
         toolDamage = Mathf.Max(0, data.MiningDamage);
         toolRarityLevel = ParseRarityLevel(data.Rarity);
@@ -99,6 +123,9 @@ public class ToolBase : MonoBehaviour
 
     public void OnEquip()
     {
+        transform.localPosition = equippedLocalPosition;
+        transform.localRotation = Quaternion.Euler(equippedLocalRotation);
+        transform.localScale = equippedLocalScale;
         Debug.Log("Equipped " + toolName);
         // Add tool to player here
     }
@@ -106,6 +133,7 @@ public class ToolBase : MonoBehaviour
     public void OnUnequip()
     {
         Debug.Log("Unequipped " + toolName);
+        Destroy(gameObject);
         // Remove tool from player here
     }
 
@@ -134,6 +162,7 @@ public class ToolBase : MonoBehaviour
 
             Debug.Log("Using " + toolName + " for " + toolDamage + " damage.");
             toolDurability--;
+            toolDurability = Mathf.Max(0, toolDurability);
             if (toolActionSpeed > 0)
             {
                 nextUseTime = Time.time + 1f / toolActionSpeed;
@@ -189,13 +218,19 @@ public class ToolBase : MonoBehaviour
         // Placeholder for tool animation logic
         Debug.Log(toolName + "has no animation.");
 
+        EnsureToolSpriteReference();
+        if (toolSprite == null)
+        {
+            yield break;
+        }
+
         toolSprite.transform.localScale = new Vector2(8f, 8f); // example animation effect, scales the sprite up slightly when used
         
         yield return new WaitForSeconds(0.5f); // wait for a short duration to simulate animation timing
 
-        toolSprite.transform.localPosition = new Vector2(0f,-4f); // reset position to prevent animation issues with different tools
-        toolSprite.transform.localRotation = Quaternion.Euler(0f, 0f, 135f); // reset rotation to prevent animation issues with different tools
-        toolSprite.transform.localScale = new Vector2(7f, 7f); // reset scale to prevent animation issues with different tools        
+        transform.localPosition = equippedLocalPosition;
+        transform.localRotation = Quaternion.Euler(equippedLocalRotation);
+        transform.localScale = equippedLocalScale;
     }
 
 }

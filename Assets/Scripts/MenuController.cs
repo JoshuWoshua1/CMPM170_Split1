@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     public GameObject menuCanvas;
+    public TempPlayer player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +22,7 @@ public class MenuController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Tab)) {
             menuCanvas.SetActive(!menuCanvas.activeSelf);
+            player.SetMovementEnabled(!menuCanvas.activeSelf); // Disable player movement when menu is active
         }
     }
 }
