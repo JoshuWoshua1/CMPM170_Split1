@@ -148,13 +148,10 @@ public class TerrianGeneration : MonoBehaviour
                     blocktoplace = greystoneBlock;
                 }
 
-                GameObject newTile = new GameObject(name = "tile");
-                newTile.AddComponent<SpriteRenderer>();
-                newTile.GetComponent<SpriteRenderer>().sprite = blocktoplace.GetComponent<SpriteRenderer>().sprite;
+                GameObject newTile = Instantiate(blocktoplace);
                 newTile.transform.position = new Vector2(x + 0.5f, -(y + 0.5f));
             }
         }
     }
-
     
 }
