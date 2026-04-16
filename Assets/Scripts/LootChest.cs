@@ -96,13 +96,9 @@ public class LootChest : MonoBehaviour
         }
         else
         {
-            Debug.Log("Chest already Exists generating new one");
-            myChest = LootChestGeneration(myChest);
-            drops = new List<Tool>(myChest.drops);
+            Debug.Log("Chest already opened. Showing existing loot.");
             displayOutput(myChest);
             CacheGeneratedTool(myChest);
-            //SpawnLootDrops(myChest.drops); // places the generated loot into the world as game objects for testing
-            GetComponent<ShopItemHandler>().Use(); 
         }
         
 	}
@@ -279,6 +275,15 @@ public class LootChest : MonoBehaviour
         Debug.Log(equipped
             ? $"LootChest: Equipped '{generatedTool.Name}'."
             : "LootChest: Equip failed.");
+
+        if (equipped)
+        {
+            ShopItemHandler handler = GetComponent<ShopItemHandler>();
+            if (handler != null)
+            {
+                handler.Use();
+            }
+        }
     }
 
     private Sprite GetGeneratedToolSprite(Tool generatedTool)

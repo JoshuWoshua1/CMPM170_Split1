@@ -34,6 +34,7 @@ public class ToolBase : MonoBehaviour
     public string toolDescription = "No description";
     public int toolDamage = 1;
     public int toolDurability = 10;
+    public int maxToolDurability = 10;
     public int toolActionSpeed = 1;
     public int toolRarityLevel = 1;
     public int fortuneLevel = 1;
@@ -44,6 +45,11 @@ public class ToolBase : MonoBehaviour
     public Vector3 equippedLocalPosition = new Vector3(0f, -4f, 0f);
     public Vector3 equippedLocalRotation = new Vector3(0f, 0f, 0f);
     public Vector3 equippedLocalScale = new Vector3(7f, 7f, 7f);
+
+    protected virtual void Awake()
+    {
+        maxToolDurability = Mathf.Max(1, toolDurability);
+    }
 
     private void EnsureToolSpriteReference()
     {
@@ -72,6 +78,7 @@ public class ToolBase : MonoBehaviour
         toolName = data.Name;
         toolDescription = data.Description;
         toolDurability = Mathf.Max(0, data.Durability);
+        maxToolDurability = Mathf.Max(1, data.Durability);
         toolActionSpeed = Mathf.Max(1, data.MiningSpeed);
         toolDamage = Mathf.Max(0, data.MiningDamage);
         toolRarityLevel = ParseRarityLevel(data.Rarity);
@@ -155,6 +162,7 @@ public class ToolBase : MonoBehaviour
 
             Debug.Log("Using " + toolName + " for " + toolDamage + " damage.");
             toolDurability--;
+            toolDurability = Mathf.Max(0, toolDurability);
             if (toolActionSpeed > 0)
             {
                 nextUseTime = Time.time + 1f / toolActionSpeed;

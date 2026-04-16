@@ -6091,6 +6091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenerateBTN: {fileID: 272424591}
+  EquipBTN: {fileID: 0}
   Chest_Output_TMP: {fileID: 0}
   Chest_Item_Description_TMP: {fileID: 0}
   Chest_Item_PFP: {fileID: 0}
@@ -8916,6 +8917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rare Loot Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 9117771762524644779, guid: 21d309d484f17744f8d3ed25cb6f0284, type: 3}
+      propertyPath: EquipBTN
+      value: 
+      objectReference: {fileID: 825488730}
     m_RemovedComponents:
     - {fileID: 8132093717075185590, guid: 21d309d484f17744f8d3ed25cb6f0284, type: 3}
     m_RemovedGameObjects: []
@@ -8936,6 +8941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 507373101}
     m_Modifications:
+    - target: {fileID: 1373552306297997064, guid: 947f5303c605e764b83be2f9ac98f258, type: 3}
+      propertyPath: EquipBTN
+      value: 
+      objectReference: {fileID: 825488730}
     - target: {fileID: 3400006108888282854, guid: 947f5303c605e764b83be2f9ac98f258, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9182,6 +9191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Common Loot Chest '
       objectReference: {fileID: 0}
+    - target: {fileID: 6983645263305811382, guid: 9712fbb252c6c8a42a73dfa4f0ae73fb, type: 3}
+      propertyPath: EquipBTN
+      value: 
+      objectReference: {fileID: 825488730}
     - target: {fileID: 8179030290360094703, guid: 9712fbb252c6c8a42a73dfa4f0ae73fb, type: 3}
       propertyPath: m_IsActive
       value: 0
