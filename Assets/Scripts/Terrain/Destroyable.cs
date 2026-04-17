@@ -22,6 +22,7 @@ public class Destroyable : MonoBehaviour
 
     void Start()
     {
+        ConfigureFromBlockName();
         currentHealth = maxHealth;
 
         // If there's a healthbar attached, initialize it
@@ -29,6 +30,46 @@ public class Destroyable : MonoBehaviour
         {
             healthBar.maxHealth = maxHealth;
             healthBar.health = currentHealth;
+        }
+    }
+
+    void ConfigureFromBlockName()
+    {
+        if(name.Contains("Dirt"))
+        {
+            maxHealth = 100f;
+        }
+        else if(name.Contains("Stone"))
+        {
+            maxHealth = 150f;
+        }
+        else if(name.Contains("Gold"))
+        {
+            maxHealth = 300f;
+        }
+        else if(name.Contains("Diamond"))
+        {
+            maxHealth = 500f;
+        }
+        else if(name.Contains("Ruby"))
+        {
+            maxHealth = 700f;
+        }
+        else if(name.Contains("Emerald"))
+        {
+            maxHealth = 1000f;
+        }
+        else if(name.Contains("Lava"))
+        {
+            maxHealth = 1500f;
+        }
+        else if(name.Contains("Greystone"))
+        {
+            maxHealth = 350f;
+        }
+        else
+        {
+            maxHealth = 100f; // Default health for unknown blocks
         }
     }
 
