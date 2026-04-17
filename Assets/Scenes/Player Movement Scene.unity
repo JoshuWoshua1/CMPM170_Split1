@@ -1879,9 +1879,25 @@ PrefabInstance:
       value: Pickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
+      propertyPath: toolName
+      value: FreePicakxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
       propertyPath: toolSprite
       value: 
       objectReference: {fileID: 1892952053}
+    - target: {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
+      propertyPath: toolDurability
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
+      propertyPath: toolActionSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657705262244281851, guid: 9f79c408f4776cd4e89ab226a3d13c18, type: 3}
+      propertyPath: maxToolDurability
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9765,8 +9781,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612101765}
   m_HandleRect: {fileID: 1612101764}
   m_Direction: 2
-  m_Value: 0.999999
-  m_Size: 0.6555448
+  m_Value: 0.99999917
+  m_Size: 0.6555449
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
