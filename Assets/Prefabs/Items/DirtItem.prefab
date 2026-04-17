@@ -30,11 +30,11 @@ PrefabInstance:
       objectReference: {fileID: 5634026908348037240, guid: 3110b85a016e60141803107727f0af93, type: 3}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_AnchorMax.x

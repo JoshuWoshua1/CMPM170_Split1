@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4155070413151441056, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
+      propertyPath: ID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4155070413151441056, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: Name
       value: Stone
       objectReference: {fileID: 0}
@@ -30,11 +34,11 @@ PrefabInstance:
       objectReference: {fileID: 5725184139431673129, guid: 6cc50b3c778b4a64bb126a1d95834f1e, type: 3}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7763456997685283281, guid: d143a635560e74e7c8233eed6f0a21cd, type: 3}
       propertyPath: m_AnchorMax.x

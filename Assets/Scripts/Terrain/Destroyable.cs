@@ -142,7 +142,8 @@ public class Destroyable : MonoBehaviour
         // Spawn destruction effect
         if (destroyEffect != null)
         {
-            Instantiate(destroyEffect, transform.position, Quaternion.identity);
+
+            Instantiate(destroyEffect,transform.position, Quaternion.identity);
         }
 
         // Destroy the game object
@@ -185,7 +186,8 @@ public class Destroyable : MonoBehaviour
         }
 
         // Instantiate the item in the inventory slot
-        GameObject droppedItem = Instantiate(itemPrefab, emptySlot);
+        Vector3 offset = new Vector3(emptySlot.position.x - 50,emptySlot.position.y -50, emptySlot.position.z);
+        GameObject droppedItem = Instantiate(itemPrefab, offset, Quaternion.identity, emptySlot);
         Item itemComponent = droppedItem.GetComponent<Item>();
 
         if (itemComponent != null)
@@ -198,7 +200,7 @@ public class Destroyable : MonoBehaviour
         RectTransform rectTransform = droppedItem.GetComponent<RectTransform>();
         if (rectTransform != null)
         {
-            rectTransform.anchoredPosition = Vector2.zero;
+            rectTransform.anchoredPosition = new Vector2 (-.0f, -.0f); // Center in the slot
         }
 
         // Update the slot's current item reference
