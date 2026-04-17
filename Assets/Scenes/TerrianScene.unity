@@ -308,6 +308,7 @@ MonoBehaviour:
   rubyBlock: {fileID: 5255284878781869691, guid: aca9b0e2dd7275d4b9b0cf54a79c61b9, type: 3}
   emeraldBlock: {fileID: 8770075000882314427, guid: 716b53fa0e92fe84884ab4a0c6ca03c1, type: 3}
   greystoneBlock: {fileID: 1707040914891825088, guid: 8d0ff4ef45eb1224b825bc08ab89d21b, type: 3}
+  lavaBlock: {fileID: 5875104606234305959, guid: 77e0db34d3af2cc4a92e12f0cded1ceb, type: 3}
   worldwidth: 50
   worldheight: 100
   dirtLayerHeight: 10
@@ -340,14 +341,12 @@ MonoBehaviour:
   emeraldMaxDepthbuffer: 10
   emeraldTransitionNoiseFrequency: 0.25
   emeraldTransitionVariation: 15
-  stone: {fileID: 2758737170363901286, guid: d95e22720bd6003429eba042043ec8dd, type: 3}
-  greystone: {fileID: 2722764875039477695, guid: 4ba588f5e4c005c47976ef1dc4714dbb, type: 3}
-  grass: {fileID: -7958769179885505039, guid: 2ae87f176543eb54cb7d5a1b80a2bf62, type: 3}
-  dirt: {fileID: 5634026908348037240, guid: 3110b85a016e60141803107727f0af93, type: 3}
-  gold: {fileID: -6851385776335332034, guid: daadeffb7744b9143924a5ca49579d5b, type: 3}
-  diamond: {fileID: 3532146273704821803, guid: 06edfc141a5b3b24089f430435d952a8, type: 3}
-  ruby: {fileID: 8282347245726058188, guid: 0fdca1cadccf2334c9ee23c9bcdf555a, type: 3}
-  emerald: {fileID: -6300370248995068211, guid: 6a0aed56ce2d12c488596911ea4c6f7f, type: 3}
+  lavaNoiseFrequency: 0.5
+  lavaMinDepth: 70
+  lavaMaxDepth: 100
+  lavaMaxDepthbuffer: 10
+  lavaTransitionNoiseFrequency: 0.25
+  lavaTransitionVariation: 15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
