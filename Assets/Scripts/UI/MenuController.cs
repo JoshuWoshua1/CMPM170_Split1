@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -20,9 +21,18 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab)) {
+        // Keeping it in for now for easier testing
+        // vvvvvvvvvv REMOVE THIS LATER vvvvvvvvvv
+        if(Input.GetKeyDown(KeyCode.Tab)) { 
             menuCanvas.SetActive(!menuCanvas.activeSelf);
             player.SetMovementEnabled(!menuCanvas.activeSelf); // Disable player movement when menu is active
         }
+        // ^^^^^^^^^^ REMOVE THIS LATER ^^^^^^^^^^
+    }
+
+    public void ToggleMenu()
+    {
+        menuCanvas.SetActive(!menuCanvas.activeSelf);
+        player.SetMovementEnabled(!menuCanvas.activeSelf); // Disable player movement when menu is active
     }
 }
