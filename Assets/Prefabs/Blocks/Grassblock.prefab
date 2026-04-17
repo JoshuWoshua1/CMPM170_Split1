@@ -157,3 +157,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyEffect: {fileID: 0}
+  droppedItemID: 1
+  droppedItemQuantity: 1

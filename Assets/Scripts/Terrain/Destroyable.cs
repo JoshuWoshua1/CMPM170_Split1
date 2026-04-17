@@ -16,6 +16,10 @@ public class Destroyable : MonoBehaviour
     [Header("Destruction Settings")]
     public GameObject destroyEffect; // Optional particle effect when destroyed
 
+    [Header("Item Drop Settings")]
+    public int droppedItemID = 0; // ID of the item to drop when destroyed (0 = no drop)
+    public int droppedItemQuantity = 1; // How many items to drop
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -88,6 +92,12 @@ public class Destroyable : MonoBehaviour
 
         OnDestroyed?.Invoke();
 
+        // Drop item into player inventory
+        if (droppedItemID > 0)
+        {
+            DropItemToInventory();
+        }
+
         // Spawn destruction effect
         if (destroyEffect != null)
         {
@@ -96,6 +106,100 @@ public class Destroyable : MonoBehaviour
 
         // Destroy the game object
         Destroy(gameObject);
+    }
+
+    void DropItemToInventory()
+    {
+        // Find the ItemDictionary in the scene
+        ItemDictionary itemDict = FindFirstObjectByType<ItemDictionary>();
+        if (itemDict == null)
+        {
+            Debug.LogWarning("ItemDictionary not found in scene! Cannot drop item.");
+            return;
+        }
+
+        // Get the item prefab from the dictionary
+        GameObject itemPrefab = itemDict.GetItemPrefab(droppedItemID);
+        if (itemPrefab == null)
+        {
+            Debug.LogWarning("Item with ID " + droppedItemID + " not found in ItemDictionary!");
+            return;
+        }
+
+        // Find the ShopManager (which manages player inventory)
+        ShopManager shopManager = ShopManager.Instance;
+        if (shopManager == null)
+        {
+            Debug.LogWarning("ShopManager not found! Cannot add item to inventory.");
+            return;
+        }
+
+        // Find an empty inventory slot
+        Transform emptySlot = FindEmptyInventorySlot(shopManager.playerInventoryPanel);
+        if (emptySlot == null)
+        {
+            Debug.Log("No empty inventory slots! Item dropped on ground.");
+            // TODO: Could spawn item in world here as a pickup
+            return;
+        }
+
+        // Instantiate the item in the inventory slot
+        GameObject droppedItem = Instantiate(itemPrefab, emptySlot);
+        Item itemComponent = droppedItem.GetComponent<Item>();
+
+        if (itemComponent != null)
+        {
+            // Set the quantity
+            itemComponent.quantity = droppedItemQuantity;
+        }
+
+        // Position the item in the slot
+        RectTransform rectTransform = droppedItem.GetComponent<RectTransform>();
+        if (rectTransform != null)
+        {
+            rectTransform.anchoredPosition = Vector2.zero;
+        }
+
+        // Update the slot's current item reference
+        Slot slotComponent = emptySlot.GetComponent<Slot>();
+        if (slotComponent != null)
+        {
+            slotComponent.currentItem = droppedItem;
+        }
+        else
+        {
+            // Try ShopSlot if regular Slot not found
+            ShopSlot shopSlotComponent = emptySlot.GetComponent<ShopSlot>();
+            if (shopSlotComponent != null)
+            {
+                shopSlotComponent.currentItem = droppedItem;
+            }
+        }
+
+        Debug.Log("Added " + droppedItemQuantity + "x " + itemComponent.Name + " to player inventory!");
+    }
+
+    Transform FindEmptyInventorySlot(Transform inventoryPanel)
+    {
+        if (inventoryPanel == null) return null;
+
+        foreach (Transform child in inventoryPanel)
+        {
+            // Check for regular Slot component
+            Slot slot = child.GetComponent<Slot>();
+            if (slot != null && slot.currentItem == null)
+            {
+                return child;
+            }
+
+            // Check for ShopSlot component (used in shop inventory UI)
+            ShopSlot shopSlot = child.GetComponent<ShopSlot>();
+            if (shopSlot != null && shopSlot.currentItem == null)
+            {
+                return child;
+            }
+        }
+        return null;
     }
 
     // Public getter for current health (so other classes can check it)
